@@ -17,6 +17,15 @@ class Backpack extends Component {
                         </div>
                     ))
                 }
+                <div className='card-wrapper'>
+                    <div className='item-wrapper'>
+                        <div className={ 'item-card blue'}>
+                            <div className='request-item'>
+                                <i className='fa fa-plus' />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
