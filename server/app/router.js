@@ -5,6 +5,7 @@ const productTypesController = require('./controllers/productTypes');
 const transactionsController = require('./controllers/transactions');
 
 module.exports = (app) => {
-    app.get('/people', peopleController.index);
+    app.get('/people', peopleController.query);
+    app.get('/people/:id', peopleController.getById);
 }
 
