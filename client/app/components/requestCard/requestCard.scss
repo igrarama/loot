@@ -1,16 +1,11 @@
 @import "../../styles/colorConstants.scss";
 $card-min-height: 5em;
 
-.item-wrapper {
-  flex-grow: 1;
-}
-
 .item-card {
   border-radius: 3px;
   border: 2px solid black;
   padding: 1em;
   min-height: $card-min-height;
-  display: flex;
   align-items: center;
   justify-content: center;
 
