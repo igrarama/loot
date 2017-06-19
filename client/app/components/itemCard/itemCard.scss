@@ -1,6 +1,14 @@
+
+$card-min-width: 100px;
+$card-min-height: $card-min-width / 2;
+
 .item-card {
     border-radius: 3px;
     border: 1px solid black;
     padding: 1em;
-    
+    min-width: $card-min-width;
+    min-height: $card-min-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
