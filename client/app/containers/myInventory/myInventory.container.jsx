@@ -58,23 +58,24 @@ class MyInventory extends Component {
 
     filterItems = (item) => {
         let { filterList } = this.state;
+        let flag = false;
         filterList.map(filter => {
-            if (_.get(item, filter.key).indexOf(filter.value) != -1)
-                return true;
+            let filteredItems =  _.get(item, filter.key);
+            if (filteredItems && filteredItems.indexOf(filter.value) != -1)
+                flag = true;
         })
-        return false;
+        return flag;
+    }
+
+    searchFilter = (item) => {
+        if (!this.state.inputValue)
+            return true;
+        return JSON.stringify(item).indexOf(this.state.inputValue) != -1;
     }
     
     onSearch = (event) => {
         let { value } = event.target;
-        
-        this.addFilter(
-            { 
-                key: value ? 'all' : undefined,
-                value,
-                id: 'input'
-            }
-        )
+        this.setState({ inputValue: value });
     }
     
     render() {
@@ -117,7 +118,7 @@ class MyInventory extends Component {
                 </div>
                 <div className='main'>
                     <Backpack
-                        items={ this.props.myItems }
+                        items={ this.props.myItems.filter(this.filterItems.bind(this)).filter(this.searchFilter) }
                         activeItem={ this.activeItem }
                         onSelect={ this.selectItem.bind(this) }
                         mapItemTypeColor={ this.mapItemTypeColor.bind(this) } />
