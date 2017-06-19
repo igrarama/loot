@@ -1,6 +1,6 @@
 
-$card-min-width: 100px;
-$card-min-height: $card-min-width / 2;
+$card-min-width: 50%;
+$card-min-height: 3em;
 
 .item-card {
     border-radius: 3px;
@@ -8,7 +8,12 @@ $card-min-height: $card-min-width / 2;
     padding: 1em;
     min-width: $card-min-width;
     min-height: $card-min-height;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(0,0,0,0.1);
+    }
 }

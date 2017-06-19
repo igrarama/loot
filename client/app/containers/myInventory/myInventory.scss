@@ -1,7 +1,14 @@
 #my-inventory-page {
-
     .backpack {
         display: flex;
-        justify-content: space-around;
+        flex-wrap: wrap;
+
+        .card-wrapper {
+            width: 25%;
+            padding-bottom: 1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     }
 }

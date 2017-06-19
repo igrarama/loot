@@ -14,6 +14,21 @@ const itemsMock = [
     },
     {
         id: 3
+    },
+    {
+        id: 4
+    },
+    {
+        id: 5
+    },
+    {
+        id: 6
+    },
+    {
+        id: 7
+    },
+    {
+        id: 8
     }
 ]
 
@@ -30,9 +45,11 @@ class MyInventory extends Component {
                 <div className='backpack'>
                     {
                         myItems.map((item, i) => (
-                            <ItemCard
-                                key={ 'item_' + i }
-                                item={ item } />
+                            <div className='card-wrapper'>
+                                <ItemCard
+                                    key={ 'item_' + i }
+                                    item={ item } />
+                            </div>
                         ))
                     }
                 </div>
