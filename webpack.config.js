@@ -29,10 +29,16 @@ module.exports = {
   },
 
   module: {
-    loaders: [{
-      test: /(\.js|\.jsx)$/,
-      loaders: ['react-hot-loader', 'babel-loader'],
-      include: path.join(__dirname, 'client')
-    }]
+    loaders: [
+      {
+        test: /\.(js|jsx)$/,
+        loaders: ['react-hot-loader', 'babel-loader'],
+        include: path.join(__dirname, 'client')
+      },
+      {
+        test: /\.(css|scss)$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+    ]
   }
 };
