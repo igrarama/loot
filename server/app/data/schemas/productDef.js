@@ -7,6 +7,6 @@ const productDefSchema = mongoose.Schema({
     isInStock: Boolean,
     price: Number,
     productAttributes: mongoose.Schema.Types.Mixed
-});
+}, { collection: 'productDefs' });
 
 const ProductDef = mongoose.model('ProductDef', productDefSchema);

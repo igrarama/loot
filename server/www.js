@@ -21,7 +21,7 @@ app.use(helmet());
 app.use(morgan('dev'));
 app.use(compression());
 app.use(cookieParser());
-app.use(bodyParser.json(gconf.get('server.bodyParser')));
+app.use(bodyParser.json());
 app.use(sessions(gconf.get('server.sessions')));
 
 /* DB */
