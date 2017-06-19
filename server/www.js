@@ -2,44 +2,37 @@ const http = require('http');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const express = require('express');
+const mongoose = require('mongoose');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const sessions = require('express-session');
 const errorhandler = require('errorhandler');
 const cookieParser = require('cookie-parser');
-const mongoose = require('mongoose');
-const mongooseModels = require('./app/data/models.js');
+const gconf = require('gconf').instance.default;
 
 const app = module.exports = express();
 
 app.set('ip', process.env.NODE_IP || '');
 app.set('port', process.env.NODE_PORT || 3000);
 
+/* API and ect.. */
 app.use(helmet());
 app.use(morgan('dev'));
 app.use(compression());
 app.use(cookieParser());
-app.use(bodyParser.json({
- type: 'application/*+json'
-}));
-app.use(sessions({
-  secret: 'a304dbeed97c33c3a48016e474938c95', 
-  name: 'loot-session',
-  resave: true,
-  saveUninitialized: true
-}));
+app.use(bodyParser.json(gconf.get('server.bodyParser')));
+app.use(sessions(gconf.get('server.sessions')));
 
+/* DB */
+require('./app/data/models').initSchemas();
+
+/* Passport */
 app.use(passport.initialize());
 app.use(passport.session());
+require('./app/auth/passport')(passport);
 
-require('./auth/passport')(passport);
-
-app.get('/user', (req, res) => res.send(req.user));
-app.get('/user/login', 
-  passport.authenticate('local'),
-  (req, res) => res.redirect('/user'));
-
+/* Serve Static Files */
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static('dist'));
 } else {
@@ -47,9 +40,10 @@ if(process.env.NODE_ENV === 'production'){
   app.use(require('errorhandler')());
 }
 
-http.createServer(app).listen(app.get('port'), app.get('ip'), () =>{
-  console.log(process.pid, 'Listening in port', app.get('port'));
+/* Server Start */
+mongoose.connect(gconf.get('db.url'), () => {
+  console.log('Mongo Connected');
+  http.createServer(app).listen(app.get('port'), app.get('ip'), () =>{
+    console.log(process.pid, 'Listening in port', app.get('port'));
+  });
 });
-
-mongooseModels.initSchemas();
-mongoose.connect('mongodb://loot-backend:Y5NEzHQ04pdVaOX2i5ioE3k42VnM5pnKGLako2qSWcRswhFJcV3XAL01nquv8rcNR1g0WQRWldm8ExVueMuC4A==@loot-backend.documents.azure.com:10255/loot-db?ssl=true');

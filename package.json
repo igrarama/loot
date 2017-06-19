@@ -5,7 +5,7 @@
   "main": "www.js",
   "scripts": {
     "start": "node ./server/www.js",
-    "dev": "nodemon ./server/www.js",
+    "dev": "nodemon --ignore dist/ --ignore client/ ./server/www.js",
     "build": "webpack --config ./webpack-prod.config.js",
     "clean": "rm -rf dist && mkdir dist",
     "rebuild": "npm run clean && npm run build"
@@ -27,6 +27,7 @@
     "errorhandler": "^1.5.0",
     "express": "^4.15.3",
     "express-session": "^1.15.3",
+    "gconf": "^0.4.3",
     "helmet": "^3.6.1",
     "history": "^4.6.2",
     "immutable": "^3.8.1",
