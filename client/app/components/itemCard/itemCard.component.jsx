@@ -5,15 +5,15 @@ import './itemCard.scss';
 class ItemCard extends Component {
     render() {
         return (
-            <div>
-                
+            <div className='item-card'>
+                { this.props.item.id }
             </div>
         );
     }
 }
 
 ItemCard.propTypes = {
-
+    item: PropTypes.object.isRequired
 };
 
 export default ItemCard;
