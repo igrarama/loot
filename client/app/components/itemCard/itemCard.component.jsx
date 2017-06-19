@@ -5,17 +5,6 @@ import './itemCard.scss';
 import ItemModal from './itemModal/itemModal.component';
 
 class ItemCard extends Component {
-	constructor() {
-		super();
-		this.state = {
-			isExpanded: false
-		}
-	}
-
-	setIsExpanded = () => {
-		let { isExpanded } = this.state;
-		this.setState({ isExpanded: !isExpanded });
-	}
 
 	renderExpanded(){
 		return (
@@ -23,20 +12,22 @@ class ItemCard extends Component {
 				<div className='modal-bg'></div>
 				<ItemModal
 					item={ this.props.item }
-					onClose={ this.setIsExpanded.bind(this) } />
+					onClose={ this.props.onSelect.bind(this, false) } />
 			</div>
 		)
 	}
 	
 	render() {
+		let { item, expanded, typeColor, onSelect } = this.props;
+
 		return (
 		   <div className='item-wrapper'>
 				<div
-					className={ 'item-card ' + this.props.typeColor}
-					onClick={ this.setIsExpanded.bind(this) }>
-					<span>{ this.props.item.id }</span>
+					className={ 'item-card ' + typeColor}
+					onClick={ onSelect.bind(this, true) }>
+					<span>{ item.id }</span>
 				</div>
-				{ this.state.isExpanded ? this.renderExpanded() : null }
+				{ expanded ? this.renderExpanded() : null }
 			</div>
 		);
 	}
@@ -44,11 +35,15 @@ class ItemCard extends Component {
 
 ItemCard.propTypes = {
 	item: PropTypes.object.isRequired,
-	typeColor: PropTypes.string
+	expanded: PropTypes.bool,
+	typeColor: PropTypes.string,
+	onSelect: PropTypes.func
 };
 
 ItemCard.defaultProps = {
-	typeColor: 'base'
+	typeColor: 'base',
+	expanded: false,
+	onSelect: () => {}
 }
 
 export default ItemCard;

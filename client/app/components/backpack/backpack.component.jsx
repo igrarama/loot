@@ -12,6 +12,8 @@ class Backpack extends Component {
 						<div className='card-wrapper' key={ 'item_' + i }>
 							<ItemCard
 								item={ item }
+								expanded={ this.props.activeItem == item }
+								onSelect={ this.props.onSelect.bind(this, item) }
 								typeColor={ this.props.mapItemTypeColor(item.type.title) } />
 						</div>
 					))
@@ -23,7 +25,13 @@ class Backpack extends Component {
 
 Backpack.propTypes = {
 	items: PropTypes.array.isRequired,
-	mapItemTypeColor: PropTypes.func.isRequired
+	mapItemTypeColor: PropTypes.func.isRequired,
+	activeItem: PropTypes.object,
+	onSelect: PropTypes.func
 };
+
+Backpack.defaultProps = {
+	onSelect: () => {}
+}
 
 export default Backpack;

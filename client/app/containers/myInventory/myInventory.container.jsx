@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { routerActions } from 'react-router-redux';
 
 import './myInventory.scss';
 import Backpack from '../../components/backpack/backpack.component';
@@ -57,7 +58,18 @@ const generalTags = [
 
 class MyInventory extends Component {
 
-	mapItemTypeColor = (type) => {
+	constructor(props) {
+		super(props);
+	}
+
+	get activeItem(){
+		let { match, myItems } = this.props;
+		if(match.params.id){
+			return myItems.find(item => item.id == match.params.id);
+		}
+	}
+
+	mapItemTypeColor(type) {
 		switch (type) {
 			case 'tech':
 				return 'blue';
@@ -65,6 +77,14 @@ class MyInventory extends Component {
 				return 'green';
 			default:
 				return 'base';
+		}
+	}
+
+	selectItem(item, isSelected){
+		if(isSelected){
+			this.props.history.push(`/inventory/${item.id}`);
+		} else {
+			this.props.history.push(`/inventory`);
 		}
 	}
 	
@@ -89,6 +109,8 @@ class MyInventory extends Component {
 				</div>
 				<Backpack
 					items={ this.props.myItems }
+					activeItem={ this.activeItem }
+					onSelect={ this.selectItem.bind(this) }
 					mapItemTypeColor={ this.mapItemTypeColor.bind(this) } />
 				<div className='footer'>
 					

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router';
+import { Route, Redirect, Switch } from 'react-router';
 import { routerActions } from 'react-router-redux';
 import { UserAuthWrapper } from 'redux-auth-wrapper';
 
@@ -19,8 +19,10 @@ import MyInventory from './containers/myInventory/myInventory.container';
 export default () => (
   <App>
     <Switch>
-      <Route exact path="/" component={ MyInventory} />
+      <Redirect exact path="/" to="/inventory" />
       <Route path="/login" component={ Login } />
+      <Route exact path="/inventory" component={ MyInventory } />
+      <Route path="/inventory/:id" component={ MyInventory } />
     </Switch>
   </App>
 )
