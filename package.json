@@ -4,7 +4,7 @@
   "description": "Loot for stuuf",
   "main": "www.js",
   "scripts": {
-    "start": "node www.js"
+    "start": "node ./server/www.js"
   },
   "repository": {
     "type": "git",
