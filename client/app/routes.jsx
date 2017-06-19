@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router'
 import App from './app'
-import Test from './test/test.container';
+import Test from './containers/test/test.container';
 
 export default () => (
   <App>
