@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import ItemCard from '../itemCard/itemCard.component';
+import './backpack.scss';
 
 class Backpack extends Component {
     render() {

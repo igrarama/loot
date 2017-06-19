@@ -90,7 +90,9 @@ class MyInventory extends Component {
                     items={ this.props.myItems }
                     mapItemTypeColor={ this.mapItemTypeColor.bind(this) } />
                 <div className='footer'>
-                    
+                    <div className='request-item-wrapper'>
+                        <i className='fa fa-plus request-item' />
+                    </div>
                 </div>
             </div>
         );
