@@ -5,56 +5,6 @@ import { connect } from 'react-redux';
 import './myInventory.scss';
 import Backpack from '../../components/backpack/backpack.component';
 
-const itemsMock = [
-    {
-        id: 1,
-        type: {
-            title: 'tech'
-        }
-    },
-    {
-        id: 2,
-        type: {
-            title: 'army'
-        }
-    },
-    {
-        id: 3,
-        type: {
-            title: 'army'
-        }
-    },
-    {
-        id: 4,
-        type: {
-            title: 'tech'
-        }
-    },
-    {
-        id: 5,
-        type: {
-            title: 'tech'
-        }
-    },
-    {
-        id: 6,
-        type: {
-            title: 'army'
-        }
-    }
-]
-
-const generalTags = [
-    {
-        title: 'tech',
-        name: 'מיחשוב'
-    },
-    {
-        title: 'army',
-        name: 'צבאי'
-    }
-]
-
 class MyInventory extends Component {
     mapItemTypeColor = (type) => {
         switch (type) {
@@ -70,28 +20,34 @@ class MyInventory extends Component {
     render() {
         return (
             <div id='my-inventory-page'>
-                <div className='inventory-options'>
-                    <div className='search'>
-                        <input placeholder={'חיפוש'} />
-                    </div>
-                    <div className='general-tags'>
-                        {
-                            generalTags.map((tag, i) => (
-                                <span
-                                    key={ 'generalTag_' + i }
-                                    className={ this.mapItemTypeColor(tag.title) }>
-                                    { tag.name }
-                                </span>
-                            ))
-                        }
+                <div className='header'>
+                    <h3>הציוד שלי</h3>
+                    <div className='inventory-options'>
+                        <div className='search'>
+                            <input placeholder={'חיפוש'} />
+                        </div>
+                        <div className='general-tags'>
+                            {
+                                this.props.generalTags.map((tag, i) => (
+                                    <span
+                                        key={ 'generalTag_' + i }
+                                        className={ 'tag ' + this.mapItemTypeColor(tag.title) }>
+                                        <i className='fa fa-tag' />
+                                        { tag.name }
+                                    </span>
+                                ))
+                            }
+                        </div>
                     </div>
                 </div>
-                <Backpack
-                    items={ this.props.myItems }
-                    mapItemTypeColor={ this.mapItemTypeColor.bind(this) } />
+                <div className='main'>
+                    <Backpack
+                        items={ this.props.myItems }
+                        mapItemTypeColor={ this.mapItemTypeColor.bind(this) } />
+                </div>
                 <div className='footer'>
-                    <div className='request-item-wrapper'>
-                        <i className='fa fa-plus request-item' />
+                    <div className='request-item'>
+                        <i className='fa fa-plus' />
                     </div>
                 </div>
             </div>
@@ -106,7 +62,8 @@ MyInventory.propTypes = {
 let mapStateToProps = (store) => {
     // map to correct state
     return {
-        myItems: store.myItems || itemsMock
+        myItems: store.user.myItems,
+        generalTags: store.settings.generalTags
     }
 }
 

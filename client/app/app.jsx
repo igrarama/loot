@@ -7,8 +7,13 @@ import './styles/site.scss';
 class App extends Component {
   render() {
     return (
-      <div>
-        { this.props.children }
+      <div className='wrapper'>
+        <header>
+          ברוך הבא
+        </header>
+        <main>
+          { this.props.children }
+        </main>
       </div>
     );
   }
