@@ -1,2 +1,4 @@
-# uncleseed
-React + Redux seed with hotloading
+# Loot
+
+
+Kaztiiiiiii
