@@ -3,8 +3,6 @@ import { Provider } from 'react-redux';
 import Routes from '../app/routes';
 import { ConnectedRouter } from 'react-router-redux';
 
-console.log(ConnectedRouter);
-
 const Root = ({ store, history }) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
