@@ -13,5 +13,4 @@ class Test extends Component{
   }
 }
 
-
 export default Test;
