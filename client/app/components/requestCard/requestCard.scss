@@ -1,0 +1,65 @@
+@import "../../styles/colorConstants.scss";
+$card-min-height: 5em;
+
+.item-wrapper {
+  flex-grow: 1;
+}
+
+.item-card {
+  border-radius: 3px;
+  border: 2px solid black;
+  padding: 1em;
+  min-height: $card-min-height;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.base {
+    background-color: white;
+    border-color: lightgrey;
+
+    &:hover {
+      background-color: lightgrey;
+    }
+  }
+
+  &.blue {
+    background-color: $color-primary-1;
+    border-color: $color-primary-3;
+
+    &:hover {
+      background-color: $color-primary-3;
+    }
+  }
+
+  &.purple {
+    background-color: $color-secondary-1-1;
+    border-color: $color-secondary-1-3;
+
+    &:hover {
+      background-color: $color-secondary-1-3;
+    }
+  }
+
+  &.green {
+    background-color: $color-secondary-2-1;
+    border-color: $color-secondary-2-3;
+
+    &:hover {
+      background-color: $color-secondary-2-3;
+    }
+  }
+
+  &.orange {
+    background-color: $color-complement-1;
+    border-color: $color-complement-3;
+
+    &:hover {
+      background-color: $color-complement-3;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
