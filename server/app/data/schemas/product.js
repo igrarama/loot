@@ -10,7 +10,7 @@ const productSchema = mongoose.Schema({
     isInUse: Boolean,
     issueDate: Date,
     serialNumber: String,
-    productAttributes: [mongoose.Schema.Types.Mixed]
+    productAttributes: mongoose.Schema.Types.Mixed
 });
 
 const Product = mongoose.model('Product', productSchema);
