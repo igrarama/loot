@@ -6,5 +6,6 @@ const transactionsController = require('./controllers/transactions');
 
 module.exports = (app) => {
     app.get('/people', peopleController.index);
+    
 }
 
