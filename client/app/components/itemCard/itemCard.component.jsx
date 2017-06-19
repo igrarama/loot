@@ -28,6 +28,7 @@ class ItemCard extends Component {
                 {
                     this.state.isExpanded ? 
                         <div className='item-expanded-wrapper'>
+                            <div className='modal-bg'></div>
                             <ItemModal
                                 item={ this.props.item }
                                 onClose={ this.setIsExpanded.bind(this) } />

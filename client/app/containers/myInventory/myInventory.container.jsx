@@ -56,6 +56,17 @@ const generalTags = [
 ]
 
 class MyInventory extends Component {
+    mapItemTypeColor = (type) => {
+        switch (type) {
+            case 'tech':
+                return 'blue';
+            case 'army':
+                return 'green';
+            default:
+                return 'base';
+        }
+    }
+    
     render() {
         let { myItems } = this.props;
 
@@ -70,7 +81,7 @@ class MyInventory extends Component {
                             generalTags.map((tag, i) => (
                                 <span
                                     key={ 'generalTag_' + i }
-                                    className={ tag.title }>
+                                    className={ this.mapItemTypeColor(tag.title) }>
                                     { tag.name }
                                 </span>
                             ))
@@ -82,10 +93,14 @@ class MyInventory extends Component {
                         myItems.map((item, i) => (
                             <div className='card-wrapper' key={ 'item_' + i }>
                                 <ItemCard
-                                    item={ item } />
+                                    item={ item }
+                                    typeColor={ this.mapItemTypeColor(item.type.title) } />
                             </div>
                         ))
                     }
+                </div>
+                <div className='footer'>
+                    
                 </div>
             </div>
         );
