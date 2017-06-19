@@ -7,6 +7,8 @@ import _ from 'lodash';
 import './myInventory.scss';
 import Backpack from '../../components/backpack/backpack.component';
 
+import { fetchUserItems } from '../../../redux/actions/userActions';
+
 class MyInventory extends Component {
     constructor(props) {
         super(props);
@@ -79,6 +81,10 @@ class MyInventory extends Component {
         this.setState({ inputValue: value });
     }
     
+    componentWillMount() {
+        this.props.dispatch(fetchUserItems());
+    }
+
     render() {
         return (
             <div id='my-inventory-page'>

@@ -1,2 +1,3 @@
-
 export const SET_USER = 'SET_USER';
+export const LOAD_USER_ITEMS = 'LOAD_USER_ITEMS';
+export const LOAD_USER_DETAILS = 'LOAD_USER_DETAILS';
