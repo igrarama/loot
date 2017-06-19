@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { routerActions } from 'react-router-redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
@@ -7,12 +8,27 @@ import './myInventory.scss';
 import Backpack from '../../components/backpack/backpack.component';
 
 class MyInventory extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             filterList: []
         }
     }
+    
+    get activeItem(){
+		let { match, myItems } = this.props;
+		if(match.params.id){
+			return myItems.find(item => item.id == match.params.id);
+		}
+	}
+
+    selectItem(item, isSelected){
+		if(isSelected){
+			this.props.history.push(`/inventory/${item.id}`);
+		} else {
+			this.props.history.push(`/inventory`);
+		}
+	}
     
     mapItemTypeColor = (type) => {
         switch (type) {
@@ -101,7 +117,9 @@ class MyInventory extends Component {
                 </div>
                 <div className='main'>
                     <Backpack
-                        items={ this.props.myItems.filter(this.filterItems) }
+                        items={ this.props.myItems }
+                        activeItem={ this.activeItem }
+                        onSelect={ this.selectItem.bind(this) }
                         mapItemTypeColor={ this.mapItemTypeColor.bind(this) } />
                 </div>
             </div>
@@ -124,11 +142,10 @@ class MyInventory extends Component {
 }
 
 MyInventory.propTypes = {
-    myItems: PropTypes.array.isRequired
+	myItems: PropTypes.array.isRequired
 };
 
 let mapStateToProps = (store) => {
-    // map to correct state
     return {
         myItems: store.user.myItems,
         generalTags: store.settings.generalTags

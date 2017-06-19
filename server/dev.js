@@ -14,5 +14,6 @@ app.use(dev_middleware);
 app.use(require('webpack-hot-middleware')(compiler));
 
 app.get('*', (req, res) => {
+  res.set('Content-Type', 'text/html');
   res.send(dev_middleware.fileSystem.readFileSync(path.join(wepback_config.output.path, 'index.html')));
 });

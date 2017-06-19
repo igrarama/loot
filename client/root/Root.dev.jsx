@@ -1,9 +1,8 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import Routes from '../app/routes';
 import { ConnectedRouter } from 'react-router-redux';
-
-console.log(ConnectedRouter);
 
 const Root = ({ store, history }) => (
   <Provider store={store}>
