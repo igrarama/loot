@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const personSchema = mongoose.Schema({
-    id: mongoose.Schema.Types.ObjectId,
     personalNumber: String,
     firstName: String,
     lastName: String,
     email: String,
+    orgPath: String,
     birthDate: Date,
     enrollmentDate: Date,
     releaseDate: Date,

@@ -5,47 +5,45 @@ import './itemCard.scss';
 import ItemModal from './itemModal/itemModal.component';
 
 class ItemCard extends Component {
-    constructor() {
-        super();
-        this.state = {
-            isExpanded: false
-        }
-    }
 
-    setIsExpanded = () => {
-        let { isExpanded } = this.state;
-        this.setState({ isExpanded: !isExpanded });
-    }
-    
-    render() {
-        return (
-           <div className='item-wrapper'>
-                <div
-                    className={ 'item-card ' + this.props.typeColor}
-                    onClick={ this.setIsExpanded.bind(this) }>
-                    <span>{ this.props.item.id }</span>
-                </div>
-                {
-                    this.state.isExpanded ? 
-                        <div className='item-expanded-wrapper'>
-                            <div className='modal-bg'></div>
-                            <ItemModal
-                                item={ this.props.item }
-                                onClose={ this.setIsExpanded.bind(this) } />
-                        </div> : null
-                }
-            </div>
-        );
-    }
+	renderExpanded(){
+		return (
+			<div className='item-expanded-wrapper'>
+				<div className='modal-bg'></div>
+				<ItemModal
+					item={ this.props.item }
+					onClose={ this.props.onSelect.bind(this, false) } />
+			</div>
+		)
+	}
+	
+	render() {
+		let { item, expanded, typeColor, onSelect } = this.props;
+
+		return (
+		   <div className='item-wrapper'>
+				<div
+					className={ 'item-card ' + typeColor}
+					onClick={ onSelect.bind(this, true) }>
+					<span>{ item.id }</span>
+				</div>
+				{ expanded ? this.renderExpanded() : null }
+			</div>
+		);
+	}
 }
 
 ItemCard.propTypes = {
-    item: PropTypes.object.isRequired,
-    typeColor: PropTypes.string
+	item: PropTypes.object.isRequired,
+	expanded: PropTypes.bool,
+	typeColor: PropTypes.string,
+	onSelect: PropTypes.func
 };
 
 ItemCard.defaultProps = {
-    typeColor: 'base'
+	typeColor: 'base',
+	expanded: false,
+	onSelect: () => {}
 }
 
 export default ItemCard;
