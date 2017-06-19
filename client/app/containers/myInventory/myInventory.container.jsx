@@ -11,7 +11,8 @@ class MyInventory extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            filterList: []
+            filterList: [],
+            inputValue: ''
         }
     }
     
@@ -87,7 +88,8 @@ class MyInventory extends Component {
                         <div className='search'>
                             <input
                                 placeholder={'חיפוש'}
-                                onChange={ this.onSearch.bind(this) } />
+                                onChange={ this.onSearch.bind(this) }
+                                value={ this.state.inputValue } />
                         </div>
                         <div className='general-tags'>
                             {
