@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 const WebpackNotifierPlugin = require('webpack-notifier');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -14,14 +15,20 @@ module.exports = {
   ],
 
   output: {
-    path: path.join(__dirname, 'dist/js'),
-    filename: 'bundle.js',
-    publicPath: '/js/'
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle-[hash:6].js',
+    publicPath: '/'
   },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new WebpackNotifierPlugin()
+    new WebpackNotifierPlugin(),
+    new HtmlWebpackPlugin({
+      template: './static/index.html'
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+    })
   ],
 
   resolve: {
@@ -30,15 +37,8 @@ module.exports = {
 
   module: {
     loaders: [
-      {
-        test: /\.(js|jsx)$/,
-        loaders: ['react-hot-loader', 'babel-loader'],
-        include: path.join(__dirname, 'client')
-      },
-      {
-        test: /\.(css|scss)$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
-      },
+      { test: /\.(js|jsx)$/, use: ['react-hot-loader', 'babel-loader'], include: path.join(__dirname, 'client') },
+      { test: /\.(css|scss)$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
     ]
   }
 };

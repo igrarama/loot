@@ -23,8 +23,9 @@ coverage
 # node-waf configuration
 .lock-wscript
 
-# Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
+# Compiled
+build
+dist
 
 # Dependency directories
 node_modules
@@ -35,6 +36,3 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
-
-# package-lock - node 8
-package-lock.json
