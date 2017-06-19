@@ -26,6 +26,8 @@ app.use(sessions(gconf.get('server.sessions')));
 
 /* DB */
 require('./app/data/models').initSchemas();
+const router = require('./app/router.js');
+router(app);
 
 /* Passport */
 app.use(passport.initialize());
