@@ -6,7 +6,9 @@ const transactionSchema = mongoose.Schema({
     receiver: { type: 'ObjectId', ref: 'Person' },
     product: { type: 'ObjectId', ref: 'Product' },
     approver: { type: 'ObjectId', ref: 'Person' },
-    transactionTime: Date
+    transactionTime: Date,
+    status: String,
+    active: Boolean
 });
 
 const Transaction = mongoose.model('Transaction', transactionSchema);
