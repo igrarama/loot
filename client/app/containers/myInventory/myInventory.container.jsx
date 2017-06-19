@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import './myInventory.scss';
-import ItemCard from '../../components/itemCard/itemCard.component';
+import Backpack from '../../components/backpack/backpack.component';
 
 const itemsMock = [
     {
@@ -68,8 +68,6 @@ class MyInventory extends Component {
     }
     
     render() {
-        let { myItems } = this.props;
-
         return (
             <div id='my-inventory-page'>
                 <div className='inventory-options'>
@@ -88,17 +86,9 @@ class MyInventory extends Component {
                         }
                     </div>
                 </div>
-                <div className='backpack'>
-                    {
-                        myItems.map((item, i) => (
-                            <div className='card-wrapper' key={ 'item_' + i }>
-                                <ItemCard
-                                    item={ item }
-                                    typeColor={ this.mapItemTypeColor(item.type.title) } />
-                            </div>
-                        ))
-                    }
-                </div>
+                <Backpack
+                    items={ this.props.myItems }
+                    mapItemTypeColor={ this.mapItemTypeColor.bind(this) } />
                 <div className='footer'>
                     
                 </div>
