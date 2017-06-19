@@ -1,6 +1,6 @@
 {
   "db": {
-    "url": "mongodb://loot-backend:Y5NEzHQ04pdVaOX2i5ioE3k42VnM5pnKGLako2qSWcRswhFJcV3XAL01nquv8rcNR1g0WQRWldm8ExVueMuC4A==@loot-backend.documents.azure.com:10255/loot-db?ssl=true"
+    "url": "mongodb://localhost:27017/loot"
   },
   "server": {
     "sessions": {
