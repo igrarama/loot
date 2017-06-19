@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node ./server/www.js",
     "dev": "nodemon ./server/www.js",
-    "build": "webpack"
+    "build": "webpack --config ./webpack-prod.config.js",
+    "clean": "rm -rf dist && mkdir dist",
+    "rebuild": "npm run clean && npm run build"
   },
   "repository": {
     "type": "git",

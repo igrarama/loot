@@ -8,6 +8,8 @@ const compression = require('compression');
 const sessions = require('express-session');
 const errorhandler = require('errorhandler');
 const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
+const mongooseModels = require('./app/data/models.js');
 
 const app = module.exports = express();
 
@@ -48,3 +50,6 @@ if(process.env.NODE_ENV === 'production'){
 http.createServer(app).listen(app.get('port'), app.get('ip'), () =>{
   console.log(process.pid, 'Listening in port', app.get('port'));
 });
+
+mongooseModels.initSchemas();
+mongoose.connect('mongodb://loot-backend:Y5NEzHQ04pdVaOX2i5ioE3k42VnM5pnKGLako2qSWcRswhFJcV3XAL01nquv8rcNR1g0WQRWldm8ExVueMuC4A==@loot-backend.documents.azure.com:10255/loot-db?ssl=true');
