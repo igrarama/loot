@@ -10,12 +10,12 @@ RUN npm install
 
 # Define Env Variables
 ENV NODE_ENV production
-ENV NODE_PORT 8080
+ENV NODE_PORT 80
 
 # Bundle app source
 COPY . /usr/src/app
 RUN npm run build
 
-EXPOSE 8080
+EXPOSE 80
 
 CMD [ "npm", "run", "start" ]
