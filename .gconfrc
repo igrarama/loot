@@ -1,0 +1,12 @@
+{
+  "config": {
+    "gconf": {
+      "default_domain": "development",
+      "node_env": false
+    },
+    "file": {
+      "development": "./server/config/config.dev.json",
+      "production": "./server/config/config.prod.json"
+    }
+  }
+}
