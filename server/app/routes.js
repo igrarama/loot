@@ -14,6 +14,7 @@ router.get('/people/:id', peopleController.getById);
 // Orders
 router.get('/orders', ordersController.query);
 router.get('/orders/:id', ordersController.getById);
+router.post('/orders', ordersController.create);
 
 // ProductTypes
 router.get('/productTypes', productTypesController.query);
