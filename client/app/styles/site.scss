@@ -12,8 +12,8 @@ html {
     height: 100vh;
     direction: rtl;
     box-sizing: border-box;
-    border: 1.5em solid $color-complement-2;
-    padding: 1em;
+    background-color: $color-complement-2;
+    padding: 1.5em;
     overflow: hidden;
     overflow-y: auto;
     display: flex;
@@ -23,6 +23,9 @@ html {
         flex-grow: 1;
         display: flex;
         flex-direction: column;
+        background-color: white;
+        padding: 1em;
+        border-radius: 5px;
         
         header {
             position: absolute;
