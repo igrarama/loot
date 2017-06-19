@@ -1,11 +1,11 @@
-import { routerReducer as routing } from 'react-router-redux';
+import { routerReducer as router } from 'react-router-redux';
 import { combineReducers } from 'redux';
 
 import auth from './authReducer';
 
 const rootReducer = combineReducers({
   auth,
-  routing
+  router
 });
 
 export default rootReducer;
