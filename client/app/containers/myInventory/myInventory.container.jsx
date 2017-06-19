@@ -39,15 +39,16 @@ class MyInventory extends Component {
         return (
             <div id='my-inventory-page'>
                 <div className='inventory-options'>
-                    <div className='search'></div>
+                    <div className='search'>
+                        <input placeholder={'חיפוש'} />
+                    </div>
                     <div className='general-tags'></div>
                 </div>
                 <div className='backpack'>
                     {
                         myItems.map((item, i) => (
-                            <div className='card-wrapper'>
+                            <div className='card-wrapper' key={ 'item_' + i }>
                                 <ItemCard
-                                    key={ 'item_' + i }
                                     item={ item } />
                             </div>
                         ))

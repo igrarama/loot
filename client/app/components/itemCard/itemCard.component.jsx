@@ -5,7 +5,7 @@ import './itemCard.scss';
 class ItemCard extends Component {
     render() {
         return (
-            <div className={ 'item-card' + ''}>
+            <div className={ 'item-card ' + 'purple'}>
                 { this.props.item.id }
             </div>
         );

@@ -1,4 +1,12 @@
+@import "./colorConstants.scss";
+
 #root {
     width: 100%;
     height: 100vh;
+    direction: rtl;
+    box-sizing: border-box;
+    border: 1.5em solid $color-complement-2;
+    padding: 1em;
+    overflow: hidden;
+    overflow-y: auto;
 }
