@@ -1,0 +1,6 @@
+export default function userReducer(state = 0, action) {
+  switch (action.type) {
+    default:
+      return state;
+  }
+}
