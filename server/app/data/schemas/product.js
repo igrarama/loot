@@ -1,12 +1,8 @@
 const mongoose = require('mongoose');
 
 const productSchema = mongoose.Schema({
-    name: String,
+    productDef: { type: mongoose.Schema.Types.ObjectId, ref: 'ProductDef' }, 
     currentOwner: { type: mongoose.Schema.Types.ObjectId, ref: 'Person' },
-    isInStock: Boolean,
-    description: String,
-    type: { type: mongoose.Schema.Types.ObjectId, ref: 'ProductType' },
-    price: Number,
     isInUse: Boolean,
     issueDate: Date,
     serialNumber: String,
