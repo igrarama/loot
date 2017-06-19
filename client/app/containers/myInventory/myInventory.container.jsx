@@ -7,28 +7,51 @@ import ItemCard from '../../components/itemCard/itemCard.component';
 
 const itemsMock = [
     {
-        id: 1
+        id: 1,
+        type: {
+            title: 'tech'
+        }
     },
     {
-        id: 2
+        id: 2,
+        type: {
+            title: 'army'
+        }
     },
     {
-        id: 3
+        id: 3,
+        type: {
+            title: 'army'
+        }
     },
     {
-        id: 4
+        id: 4,
+        type: {
+            title: 'tech'
+        }
     },
     {
-        id: 5
+        id: 5,
+        type: {
+            title: 'tech'
+        }
     },
     {
-        id: 6
+        id: 6,
+        type: {
+            title: 'army'
+        }
+    }
+]
+
+const generalTags = [
+    {
+        title: 'tech',
+        name: 'מיחשוב'
     },
     {
-        id: 7
-    },
-    {
-        id: 8
+        title: 'army',
+        name: 'צבאי'
     }
 ]
 
@@ -42,7 +65,17 @@ class MyInventory extends Component {
                     <div className='search'>
                         <input placeholder={'חיפוש'} />
                     </div>
-                    <div className='general-tags'></div>
+                    <div className='general-tags'>
+                        {
+                            generalTags.map((tag, i) => (
+                                <span
+                                    key={ 'generalTag_' + i }
+                                    className={ tag.title }>
+                                    { tag.name }
+                                </span>
+                            ))
+                        }
+                    </div>
                 </div>
                 <div className='backpack'>
                     {

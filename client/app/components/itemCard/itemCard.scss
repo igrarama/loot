@@ -1,16 +1,28 @@
 @import "../../styles/colorConstants.scss";
 $card-min-height: 5em;
 
+.item-wrapper {
+    flex-grow: 1;
+}
+
 .item-card {
     border-radius: 3px;
     border: 2px solid black;
     padding: 1em;
-    flex-grow: 1;
     min-height: $card-min-height;
     display: flex;
     align-items: center;
     justify-content: center;
 
+    &.base {
+        background-color: white;
+        border-color: lightgrey;
+
+        &:hover {
+            background-color: lightgrey;
+        }
+    }
+    
     &.blue {
         background-color: $color-primary-1;
         border-color: $color-primary-3;
@@ -50,4 +62,18 @@ $card-min-height: 5em;
     &:hover {
         cursor: pointer;
     }
+}
+
+.item-expanded-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.1);
+    cursor: default;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
