@@ -26,13 +26,18 @@ app.use(sessions(gconf.get('server.sessions')));
 
 /* DB */
 require('./app/data/models').initSchemas();
-const routes = require('./app/routes.js');
-app.use('/api', routes);
 
 /* Passport */
 app.use(passport.initialize());
 app.use(passport.session());
 require('./app/auth/passport')(passport);
+
+/* Routes */
+app.use('/api', require('./app/routes'));
+
+app.post('/auth/login',
+  passport.authenticate('local'),
+  (req, res) => res.send(req.user));
 
 /* Serve Static Files */
 if(process.env.NODE_ENV === 'production'){

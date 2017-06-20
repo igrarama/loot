@@ -4,12 +4,13 @@ import createHistory from 'history/createBrowserHistory';
 
 import Root from './root/Root';
 import configureStore from './redux/store/configureStore';
+import { Map } from 'immutable';
 
 const history = createHistory();
 
 let initialState = {
-  user: {
-    myItems: [
+  user: Map({
+    items: [
       {
           id: 1,
           type: {
@@ -47,8 +48,8 @@ let initialState = {
           }
       }
     ]
-  },
-  settings: {
+  }),
+  settings: Map({
     generalTags: [
       {
           title: 'tech',
@@ -59,7 +60,7 @@ let initialState = {
           name: 'צבאי'
       }
     ]
-  }
+  })
 }
 
 const store = configureStore(history, initialState);

@@ -150,8 +150,8 @@ MyInventory.propTypes = {
 
 let mapStateToProps = (store) => {
     return {
-        myItems: store.user.myItems,
-        generalTags: store.settings.generalTags
+        myItems: store.user.get('items'),
+        generalTags: store.settings.get('generalTags')
     }
 }
 
