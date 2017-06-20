@@ -10,7 +10,7 @@ export default function settingsUser(state = 0, action) {
     case ActionTypes.LOAD_PRODUCT_TYPE_TAGS:
       return {
         ...state,
-        generalTags: tags
+        generalTags: action.tags
       }
     default:
       return state;

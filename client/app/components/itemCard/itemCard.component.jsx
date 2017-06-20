@@ -25,7 +25,10 @@ class ItemCard extends Component {
 				<div
 					className={ 'item-card ' + typeColor}
 					onClick={ onSelect.bind(this, true) }>
-					<span>{ item.id }</span>
+					<div style={{ direction: 'ltr' }}>
+						<span>{ item.productDef.name }</span>
+						<span>{ item.productDef.description }</span>
+					</div>
 				</div>
 				{ expanded ? this.renderExpanded() : null }
 			</div>
