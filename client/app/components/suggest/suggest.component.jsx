@@ -18,7 +18,8 @@ class Suggest extends Component {
 	}
 
 	onChange = (event) => {
-		this.setState({ value: event.target.value || value });
+		let value = event.target ? event.target.value : value;
+		this.setState({ value });
 	}
 	
 	render() {
