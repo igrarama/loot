@@ -7,6 +7,7 @@ import App from './app';
 
 import Login from './containers/login/login.container';
 import MyInventory from './containers/myInventory/myInventory.container';
+import MySignature from './containers/mySignatures/mySignature.container';
 
 
 // TODO: Add this
@@ -23,6 +24,7 @@ export default () => (
       <Route path="/login" component={ Login } />
       <Route exact path="/inventory" component={ MyInventory } />
       <Route path="/inventory/:id" component={ MyInventory } />
+      <Route path="/signature" component={ MySignature } />
     </Switch>
   </App>
 )
