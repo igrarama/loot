@@ -13,6 +13,8 @@ export default function settingsUser(state = Map(), action) {
       let index = items.indexOf((item) => item._id == action.item._id);
       items[index] = action.item;
       return state.set('items', action.item)
+    case ActionTypes.LOAD_PRODUCT_DEFS:
+          return state.set('productDefs', action.defs);
     default:
       return state;
   }

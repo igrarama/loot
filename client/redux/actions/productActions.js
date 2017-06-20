@@ -24,6 +24,15 @@ export let fetchProductTypeTags = () => {
 		}));
 };
 
+export let fetchProductDefs = () => {
+    return (dispatch) => fetch("/api/productDefs")
+        .then(res => res.json())
+        .then((defs) => dispatch({
+            type: ActionTypes.LOAD_PRODUCT_DEFS,
+            defs
+        }));
+}
+
 export let fetchProductHistory = (product) => {
 	return fetch('/api/transactions?product=' + product._id)
 		.then((response) => response.json())
