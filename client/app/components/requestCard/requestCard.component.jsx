@@ -26,15 +26,14 @@ class RequestCard extends Component {
                 count: groupedProducts[key].length
             };
         });
-        console.log(products);
         return <div className="order">
-            <span>products</span>
+            <span>ציוד רצוי</span>
             <ul>
                 { products.map(product => {
                     return <li className="product">
                         <span className="productName"> { product.name } </span>
                         <span className="amount"> X { product.count }</span>
-                        <span className="isInUse">{ product.isInUse }</span>
+                        <span className="isInStock"> X { product.isInUse }</span>
                     </li>
                 })}
             </ul>
@@ -48,10 +47,9 @@ class RequestCard extends Component {
                 <PersonCard customer={customer}/>
                 { this.displayOrder(products) }
                 <div className="reason">
-                    <span> : { reason }</span>
-                    <span> : { comments }</span>
+                    <span>סיבת הבקשה: { reason }</span>
+                    { comments ? <span>הערות נוספות: { comments }</span> : ""}
                 </div>
-                <span>{ this.props.item.id }</span>
             </div>
         );
     }
