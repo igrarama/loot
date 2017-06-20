@@ -44,18 +44,18 @@ class ItemCard extends Component {
 					onClick={ onSelect.bind(this, true) }>
 					<div className='basic-info'>
 						<h4>{ item.productDef.name }</h4>
-				</div>
-				<div className={ 'item-info ' + typeColor} onClick={ onSelect.bind(this, true) }>
-					<div className='basic-info'>
-						<span>{ item.productDef.description }</span>
 					</div>
-					<div className='extra-info'>
-						<span className='serial'>{ item.serialNumber ? item.serialNumber : '' }</span>
-						<input className='checkbox' type='checkbox' disabled checked={ this.state.isInUse } />
+					<div className={ 'item-info'}>
+						<div className='basic-info'>
+							<span>{ item.productDef.description }</span>
+						</div>
+						<div className='extra-info'>
+							<span className='serial'>{ item.serialNumber ? item.serialNumber : '' }</span>
+							<input className='checkbox' type='checkbox' disabled checked={ this.state.isInUse } />
+						</div>
 					</div>
 				</div>
-					{ expanded ? this.renderExpanded() : null }
-				</div>
+				{ expanded ? this.renderExpanded() : null }
 			</div>
 		);
 	}

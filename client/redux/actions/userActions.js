@@ -1,4 +1,4 @@
-
+import _ from 'lodash';
 import * as ActionTypes from '../consts/actionTypes';
 import { fetchProductType } from './productActions';
 
@@ -23,13 +23,16 @@ function populate_user(user){
 }
 
 export function searchPeople(query) {
-  return dispatch => {
-    const firstNameQuery = fetch('/api/people?firstName=' + query);
-    const lastNameQuery = fetch('/api/people?lastName=' + query);
-    Promise.all([firstNameQuery, lastNameQuery]).then(results => {
-      console.log(results);
+  const firstNameQuery = fetch('/api/people?firstName=' + query)
+    .then((response) => response.json());
+  const lastNameQuery = fetch('/api/people?lastName=' + query)
+    .then((response) => response.json());
+  return Promise.all([firstNameQuery, lastNameQuery])
+    .then((results) => {
+      let res = _.concat(...results)
+      console.log(res)
+      return res;
     })
-  };
 }
 
 export function fetchUserItems(userId) {
@@ -51,15 +54,3 @@ export function set_user(user){
     user
   };
 }
-
-// export let fetchUserDetails = (userId) => {
-// 	return (dispatch) => fetch('/api/people/' + userId)
-// 		.then((response) => response.json())
-// 		.then((dits) => {
-// 			return dispatch({
-// 				type: ActionTypes.LOAD_USER_DETAILS,
-// 				dits
-// 			});
-// 		});
-// };
-

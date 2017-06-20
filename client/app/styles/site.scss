@@ -57,7 +57,13 @@ html {
             position: absolute;
             top: 0;
             left: 0;
-            padding: 3em;
+            padding: 3em 4.5em;
+
+            h1 {
+                background-color: rgba(0,0,0,0.1);
+                padding: 0.5em;
+                border-radius: 3px;
+            }
         }
         
         main {

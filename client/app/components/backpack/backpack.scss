@@ -1,5 +1,6 @@
 .backpack {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 1em;
 
     $card-size: 15em;
