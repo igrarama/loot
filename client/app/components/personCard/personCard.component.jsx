@@ -5,7 +5,7 @@ const PersonCard = ({ customer }) => {
 
     let name = customer.orgPath + "/" + customer.firstName + " " + customer.lastName;
     let stringReleaseDate = "1/2/3"; // customer.releaseDate
-    return <div className="person">
+    return <div className="personCard">
         <div className="name">
             <span>{ name }</span>
         </div>

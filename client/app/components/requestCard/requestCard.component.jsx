@@ -17,6 +17,14 @@ class RequestCard extends Component {
         this.setState({ isExpanded: !isExpanded });
     }
 
+    displayPerson = (customer) => {
+        let name = customer.orgPath ? customer.orgPath + "/ " : "";
+        name += customer.firstName + " " + customer.lastName;
+        return <div className="person">
+            { name }
+        </div>
+    }
+
     displayOrder = (products) => {
         let groupedProducts = _.groupBy(products, 'name');
         products = Object.keys(groupedProducts).map(key => {
@@ -26,14 +34,13 @@ class RequestCard extends Component {
                 count: groupedProducts[key].length
             };
         });
-        return <div className="order">
+        return <div className="orderDetails">
             <span>ציוד רצוי</span>
             <ul>
                 { products.map(product => {
                     return <li className="product">
-                        <span className="productName"> { product.name } </span>
-                        <span className="amount"> X { product.count }</span>
-                        <span className="isInStock"> X { product.isInUse }</span>
+                        <div className="productName"> { product.name + product.isInUse ? "" : "[ חסר ]"} </div>
+                        <div className="amount"> X { product.count }</div>
                     </li>
                 })}
             </ul>
@@ -48,7 +55,7 @@ class RequestCard extends Component {
         let { customer, products, reason, comments } = this.props.item;
         return (
             <div className={ 'order ' + this.props.typeColor}>
-                <PersonCard customer={customer}/>
+                { this.displayPerson(customer) }
                 { this.displayOrder(products) }
                 <div className="reason">
                     <span>סיבת הבקשה: { reason }</span>
