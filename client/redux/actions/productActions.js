@@ -23,3 +23,9 @@ export let fetchProductTypeTags = () => {
 			tags
 		}));
 };
+
+export let fetchProductHistory = (product) => {
+	return fetch('/api/transactions?product=' + product._id)
+		.then((response) => response.json())
+		.then((history) => history)
+}
