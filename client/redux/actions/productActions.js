@@ -29,3 +29,11 @@ export let fetchProductHistory = (product) => {
 		.then((response) => response.json())
 		.then((history) => history)
 }
+
+export let updateTransaction = (id, transactionUpdate) => {
+	return fetch('/api/transactions/' + id, {
+		method: 'PUT',
+		headers: { 'content-type': 'application/json' },
+		body: JSON.stringify(transactionUpdate)
+	}).then((response) => response.status);
+}

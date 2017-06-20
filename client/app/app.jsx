@@ -5,13 +5,14 @@ import 'font-awesome/scss/font-awesome.scss';
 import './styles/site.scss';
 
 import { fetchProductTypes, fetchProductTypeTags } from '../redux/actions/productActions';
-import { fetchUser } from '../redux/actions/userActions';
+import { fetchUser, searchPeople } from '../redux/actions/userActions';
 
 class App extends Component {
   componentWillMount() {
     this.props.dispatch(fetchProductTypes());
     this.props.dispatch(fetchProductTypeTags());
     this.props.dispatch(fetchUser());
+    this.props.dispatch(searchPeople('Moshik'));
   }
   
   render() {

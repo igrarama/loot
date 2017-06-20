@@ -1,4 +1,5 @@
 export const SET_USER = 'SET_USER';
+export const SEARCH_USERS = 'SEARCH_USERS;'
 export const LOAD_USER_ITEMS = 'LOAD_USER_ITEMS';
 export const LOAD_USER_DETAILS = 'LOAD_USER_DETAILS';
 export const LOAD_PRODUCT_TYPES = 'LOAD_PRODUCT_TYPES';

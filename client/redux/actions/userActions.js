@@ -14,13 +14,22 @@ export function fetchUser() {
       });
 }
 
-
 function populate_user(user){
   return dispatch => fetchUserItems(user._id)
     .then(items => {
       dispatch(set_user(user));
       dispatch({ type: ActionTypes.LOAD_USER_ITEMS, items });
     });
+}
+
+export function searchPeople(query) {
+  return dispatch => {
+    const firstNameQuery = fetch('/api/people?firstName=' + query);
+    const lastNameQuery = fetch('/api/people?lastName=' + query);
+    Promise.all([firstNameQuery, lastNameQuery]).then(results => {
+      console.log(results);
+    })
+  };
 }
 
 export function fetchUserItems(userId) {
