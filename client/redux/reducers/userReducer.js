@@ -7,6 +7,10 @@ export default (state = Map(), action) => {
   switch(action.type){
     case ActionTypes.SET_USER:
       return state.set('current', action.user);
+    case ActionTypes.LOAD_USER_DETAILS:
+      return state.set('details', action.dits);
+    case ActionTypes.LOAD_USER_ITEMS:
+      return state.set('items', action.items);
     default:
       return state;
   }

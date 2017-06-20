@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Product = mongoose.model('Product');
 
 module.exports.getById = (req, res) => {
-    Product.findOne({ _id: req.params.id }).then((result) => {
+    Product.findOne({ _id: req.params.id }).populate('productDef currentOwner').then((result) => {
         res.json(result);
     }, (err) => {
         res.status(400).send(err);
@@ -16,5 +16,17 @@ module.exports.query = (req, res) => {
         res.json(results);
     }, (err) => {
         res.status(400).send(err);
+    });
+}
+
+module.exports.create = (req, res) => {
+    const product = new Product(req.body);
+    product.save((err) => {
+        if (err) {
+            res.status(400).send(err);
+        }
+        else {
+            res.status(204).send();
+        }
     });
 }

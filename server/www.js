@@ -39,6 +39,9 @@ app.post('/auth/login',
   passport.authenticate('local'),
   (req, res) => res.send(req.user));
 
+app.get('/auth/me',
+  (req, res) => res.send(req.user || {}));
+
 /* Serve Static Files */
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static('dist'));

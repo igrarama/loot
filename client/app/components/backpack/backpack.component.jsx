@@ -15,7 +15,7 @@ class Backpack extends Component {
 								item={ item }
 								expanded={ this.props.activeItem == item }
 								onSelect={ this.props.onSelect.bind(this, item) }
-								typeColor={ this.props.mapItemTypeColor(item.type.title) } />
+								typeColor={ this.props.mapItemTypeColor(item.productDef.type.tags[0]) } />
 						</div>
 					))
 				}

@@ -9,58 +9,8 @@ import { Map } from 'immutable';
 const history = createHistory();
 
 let initialState = {
-  user: Map({
-    items: [
-      {
-          id: 1,
-          type: {
-              title: 'tech'
-          }
-      },
-      {
-          id: 2,
-          type: {
-              title: 'army'
-          }
-      },
-      {
-          id: 3,
-          type: {
-              title: 'army'
-          }
-      },
-      {
-          id: 4,
-          type: {
-              title: 'tech'
-          }
-      },
-      {
-          id: 5,
-          type: {
-              title: 'tech'
-          }
-      },
-      {
-          id: 6,
-          type: {
-              title: 'army'
-          }
-      }
-    ]
-  }),
-  settings: Map({
-    generalTags: [
-      {
-          title: 'tech',
-          name: 'מחשוב'
-      },
-      {
-          title: 'army',
-          name: 'צבאי'
-      }
-    ]
-  })
+  user: Map({}),
+  settings: Map({})
 }
 
 const store = configureStore(history, initialState);

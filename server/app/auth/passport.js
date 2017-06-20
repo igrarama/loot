@@ -5,18 +5,23 @@ const LocalStrategy = require('passport-local').Strategy;
 
 module.exports = (passport) => {
 
-  passport.serializeUser((user, done) => done(null, user.id));
+  passport.serializeUser((user, done) => {
+    console.log('serializeUser', user);
+    done(null, user._id);
+  });
 
   passport.deserializeUser((id, done) => {
-    mongoose.model('Person').findOne({ id })
-      .then(user => done(null, user))
+    mongoose.model('Person').findById(id)
+      .then(user => {
+        console.log('deserializeUser', user);
+        done(null, user);
+      })
       .catch(err => done(err));
   });
 
   passport.use(new LocalStrategy(
     { usernameField: 'email' },
     function(email, password, done) {
-      console.log({ email, password: md5(password) });
       mongoose.model('Person')
         .findOne({ email, password: md5(password) })
         .then(user => {
