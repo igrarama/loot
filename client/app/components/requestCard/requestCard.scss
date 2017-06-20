@@ -1,0 +1,79 @@
+@import "../../styles/colorConstants.scss";
+
+.order{
+  border-radius: 3px;
+  width: 100%;
+  border: 2px solid transparent;
+  padding: 1em;
+  align-items: center;
+  justify-content: center;
+
+  *{
+    margin: 1em;
+  }
+  .person{
+    padding: 1em;
+    .info, .contact {
+      display: flex;
+    }
+  }
+  .buttons{
+    float: left;
+    .btn-success{
+      //todo: fix colors
+      background-color: $color-secondary-2-3;
+    }
+    .btn-error{
+      background-color: $color-complement-3;
+    }
+  }
+
+  &.base {
+    background-color: white;
+    border-color: lightgrey;
+
+    &:hover {
+      background-color: lightgrey;
+    }
+  }
+
+  &.blue {
+    background-color: $color-primary-1;
+    border-color: $color-primary-3;
+
+    &:hover {
+      background-color: $color-primary-3;
+    }
+  }
+
+  &.purple {
+    background-color: $color-secondary-1-1;
+    border-color: $color-secondary-1-3;
+
+    &:hover {
+      background-color: $color-secondary-1-3;
+    }
+  }
+
+  &.green {
+    background-color: $color-secondary-2-1;
+    border-color: $color-secondary-2-3;
+
+    &:hover {
+      background-color: $color-secondary-2-3;
+    }
+  }
+
+  &.orange {
+    background-color: $color-complement-1;
+    border-color: $color-complement-3;
+
+    &:hover {
+      background-color: $color-complement-3;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
