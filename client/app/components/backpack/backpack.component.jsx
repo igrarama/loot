@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import ItemCard from '../itemCard/itemCard.component';
+import './backpack.scss';
 
 class Backpack extends Component {
 	render() {
@@ -18,6 +19,15 @@ class Backpack extends Component {
 						</div>
 					))
 				}
+                <div className='card-wrapper'>
+                    <div className='item-wrapper'>
+                        <div className={ 'item-card blue'}>
+                            <div className='request-item'>
+                                <i className='fa fa-plus' />
+                            </div>
+                        </div>
+                    </div>
+                </div>
 			</div>
 		);
 	}

@@ -12,9 +12,25 @@ module.exports.getById = (req, res) => {
 module.exports.query = (req, res) => {
     const limit = req.query.limit;
     delete req.query.limit;
-    Person.find(req.query).populate('customer products').limit(limit).then((results) => {
+    Order.find(req.query).populate('customer products').limit(limit).then((results) => {
         res.json(results);
     }, (err) => {
         res.status(400).send(err);
     });
+}
+
+module.exports.create = (req, res) => {
+    const order = new Order(req.body);
+    order.save((err, newOrder) => {
+        if (err)  {
+            res.status(400).send(err);
+        }
+        else {
+            res.status(204).send();
+        }
+    });
+}
+
+module.exports.addComment = (req, res) => {
+    
 }

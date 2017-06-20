@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Alef:400,700&subset=hebrew');
-@import "./colorConstants.scss";
+@import './colorConstants.scss';
+@import './_colorClasses.scss';
 
 html {
     font-family: 'Alef', sans-serif;
@@ -11,8 +12,32 @@ html {
     height: 100vh;
     direction: rtl;
     box-sizing: border-box;
-    border: 1.5em solid $color-complement-2;
-    padding: 1em;
+    background-color: $color-complement-2;
+    padding: 1.5em;
     overflow: hidden;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    
+    .wrapper {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        padding: 1em;
+        border-radius: 5px;
+        
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 3em;
+        }
+        
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+    }
 }
