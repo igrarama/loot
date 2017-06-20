@@ -21,12 +21,13 @@ module.exports.query = (req, res) => {
 
 module.exports.create = (req, res) => {
     const transaction = new Transaction(req.body);
-    transaction.save((err) => {
+    transaction.save((err, newTransaction) => {
         if (err) {
             res.status(400).send(err);
         }
         else {
-            res.status(204).send();
+            res.set('Location', '/transactions/' + newTransaction.id);
+            res.status(200).send();
         }
     });
 }
@@ -37,7 +38,7 @@ module.exports.update = (req, res) => {
             res.status(400).send(err);
         }
         else {
-            res.status(204).send();
+            res.status(200).send();
         }
     });
 }
