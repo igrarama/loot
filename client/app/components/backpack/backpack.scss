@@ -1,13 +1,14 @@
 .backpack {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
     margin-top: 1em;
 
+    $card-size: 15em;
+
     .card-wrapper {
-        width: 45%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: inline-block;
+
+        height: $card-size;
+        width: $card-size;
+        margin: 1em;
     }
 }

@@ -5,6 +5,7 @@
   "server": {
     "sessions": {
       "secret": "a304dbeed97c33c3a48016e474938c95",
+      "name": "loot-session",
       "resave": true,
       "saveUninitialized": true
     }

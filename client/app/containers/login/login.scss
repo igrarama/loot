@@ -1,4 +1,4 @@
-@import "../../styles/colorConstants.scss";
+@import "../../styles/colors.scss";
 
 .login {
   flex: 1;
@@ -21,12 +21,12 @@
       input[type="email"], input[type="password"] {
         margin: 0.5em;
         border: none;
-        border-bottom: 2px solid $color-primary-0;
+        border-bottom: 2px solid $primary;
         padding: 0.5em;
         outline: none;
 
         &:focus {
-          border-color: $color-secondary-1-0;
+          border-color: $alteration;
         }
       }
     }
@@ -36,7 +36,7 @@
       padding: 0.5em;
       margin: 0.5em;
 
-      background-color: $color-primary-0;
+      background-color: $primary;
     }
   }
 
