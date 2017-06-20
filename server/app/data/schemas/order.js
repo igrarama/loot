@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const orderSchema = mongoose.Schema({
     customer: { type: 'ObjectId', ref: 'Person' },
-    status: String,
+    status: { type: 'ObjectId', ref: 'OrderStatus' },
     active: Boolean,
     products: [{ type: 'ObjectId', ref: 'ProductDef' }],
     reason: String,
