@@ -1,17 +1,15 @@
 import * as actionTypes from '../consts/actionTypes';
 
-export function fetchOrdersRequest(){
-    return (dispatch) => {
-        return fetch("/api/orders")
-                .then(res => res.json()).then((res) => {
-                    dispatch({
-                        type: actionTypes.GET_ORDERS,
-                        orders: res
-                    });
-        })
-    }
+export function fetchOrders(customerId){
+	return (dispatch) =>
+		fetch(`/api/orders?customer=${customerId}`)
+				.then(res => res.json())
+				.then(orders => dispatch(load_orders(orders)));
 }
 
-function confirmOrder(item, isSuccess){
-
+function load_orders(orders){
+	return {
+		type: actionTypes.LOAD_ORDERS,
+		orders
+	};
 }

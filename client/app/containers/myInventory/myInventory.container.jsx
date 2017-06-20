@@ -6,6 +6,7 @@ import _ from 'lodash';
 
 import './myInventory.scss';
 import Backpack from '../../components/backpack/backpack.component';
+import MyOrders from '../myOrders/myOrders.container';
 
 import { fetchUserItems } from '../../../redux/actions/userActions';
 
@@ -156,6 +157,7 @@ class MyInventory extends Component {
                         mapItemTypeIcon={ this.mapItemTypeIcon.bind(this) }
                         mapItemTypeColor={ this.mapItemTypeColor.bind(this) } />
                 </div>
+                <MyOrders />
             </div>
         );
     }

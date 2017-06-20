@@ -6,6 +6,7 @@ import './styles/site.scss';
 
 import { fetchProductTypes, fetchProductTypeTags } from '../redux/actions/productActions';
 import { fetchUser } from '../redux/actions/userActions';
+import { fetchOrders } from '../redux/actions/orderActions';
 
 class App extends Component {
   componentWillMount() {

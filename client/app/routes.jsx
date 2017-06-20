@@ -8,7 +8,7 @@ import App from './app';
 import Login from './containers/login/login.container';
 import MyInventory from './containers/myInventory/myInventory.container';
 import MySignature from './containers/mySignatures/mySignature.container';
-
+import MyOrders from './containers/myOrders/myOrders.container';
 
 const UserIsAuthenticated = UserAuthWrapper({
   authSelector: state => state.user.get('current'),

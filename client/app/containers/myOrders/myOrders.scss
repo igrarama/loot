@@ -1,0 +1,15 @@
+
+.orders {
+
+  padding: 1em;
+
+  .order {
+    cursor: initial;
+    .order-products {
+      padding: 3px;
+      background-color: transparent !important;
+      border-style: solid;
+      border-radius: 4px;
+    }
+  }
+}
