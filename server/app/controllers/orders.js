@@ -21,6 +21,7 @@ module.exports.query = (req, res) => {
 
 module.exports.create = (req, res) => {
     const order = new Order(req.body);
+    order.orderTime = new Date();
     order.save((err, newOrder) => {
         if (err)  {
             res.status(400).send(err);

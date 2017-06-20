@@ -21,6 +21,9 @@ module.exports.query = (req, res) => {
 
 module.exports.create = (req, res) => {
     const transaction = new Transaction(req.body);
+    transaction.status = 'ממתין לאישור חייל מקבל';
+    transaction.active = true;
+    transaction.transactionTime = new Date();
     transaction.save((err, newTransaction) => {
         if (err) {
             res.status(400).send(err);
