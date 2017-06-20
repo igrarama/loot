@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import ItemCard from '../itemCard/itemCard.component';
 import './backpack.scss';
-import Catalog from "../catalog/catalog.component";
 
 class Backpack extends Component {
 	render() {
@@ -21,7 +20,7 @@ class Backpack extends Component {
 					))
 				}
                 <div className='card-wrapper'>
-                    <div className='item-wrapper' onClick={()=>(this.props.history.push(`/catalog`))}>
+                    <div className='item-wrapper' onClick={()=>(this.props.history.push(`/myCatalog`))}>
                         <div className={ 'item-card add blue'}>
                             <div className='request-item'>
                                 <i className='fa fa-plus' />

@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import ItemCard from '../itemCard/itemCard.component';
+import Collapsible from 'react-collapsible';
 class Catalog extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+
     render() {
         return(
             <div id='catalog-page'>
@@ -10,26 +16,57 @@ class Catalog extends Component {
                 </div>
                 <div className="catalog">
                     {
-                        // this.props.items.map((item, i) => (
-                        // <div className='card-wrapper' key={ 'item_' + i }>
-                        // <ItemCard
-                        // item={ item }
-                        // expanded={ this.props.activeItem == item }
-                        // onSelect={ this.props.onSelect.bind(this, item) }
-                        // typeColor={ this.props.mapItemTypeColor(item.type.title) } />
-                        // </div>
-                        // ))
+                        this.props.productDefs.map((product, i) =>
+                            <div className='product-wrapper' key={ 'product' + i }>
+                                {
+                                    <Collapsible trigger={product.type.hebrewName}>
+                                        <p>
+                                            שם:
+                                            {product.name}
+                                        </p>
+                                        <p>
+                                        תיאור:
+                                        {product.description}</p>
+                                        <p>
+                                        מחיר:
+                                        {product.price}
+                                    </p>
+
+                                    <p>
+                                                נמצא במלאי:
+                                        {product.isInStock}
+                                     </p>
+                                        <Collapsible trigger="פרטים נוספים">
+                                            <p>
+CPU:
+                                                {product.productAttributes.CPU}
+                                            </p>
+                                            <p>
+Case Size:
+                                                {product.productAttributes.CaseSize}
+                                            </p>
+                                            <p>
+Memory:
+                                                {product.productAttributes.Memory}
+                                            </p>
+                                            <p>
+Storage:
+                                                {product.productAttributes.Storage}
+                                            </p>
+                                        </Collapsible>
+                                    </Collapsible>
+                                }
+                            </div>
+                        )
                     }
                 </div>
             </div>
         );
     }
-
-
 }
 
 Catalog.propTypes = {
-
+    productDefs: PropTypes.array.isRequired
 };
 
 export default Catalog;

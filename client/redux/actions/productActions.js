@@ -23,3 +23,12 @@ export let fetchProductTypeTags = () => {
 			tags
 		}));
 };
+
+export let fetchProductDefs = () => {
+    return (dispatch) => fetch("/api/productDefs")
+        .then(res => res.json())
+        .then((defs) => dispatch({
+            type: ActionTypes.LOAD_PRODUCT_DEFS,
+            defs
+        }));
+}
