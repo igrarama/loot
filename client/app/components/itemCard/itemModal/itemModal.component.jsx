@@ -3,17 +3,53 @@ import PropTypes from 'prop-types';
 import onClickOutside from 'react-onclickoutside';
 import _ from 'lodash';
 
+import Suggest from '../../suggest/suggest.component';
+
 import './itemModal.scss';
 import { fetchProductHistory } from '../../../../redux/actions/productActions';
+import { searchPeople } from '../../../../redux/actions/userActions';
 
 class ItemModal extends Component {
     constructor(props) {
 		super(props);
-        this.state = {}
+        this.state = {
+            selectedUser: {},
+            suggestedPeople: [],
+            searchValue: ''
+        }
 	}
     
     handleClickOutside = (event) => {
         this.props.onClose();
+    }
+    
+    setSelectedUser = (suggestion) => {
+        this.setState({ selectedUser: suggestion });
+    }
+
+    onFetchSuggestions = (suggestion) => {
+        searchPeople(suggestion.value)
+            .then((suggestedPeople) => {
+                this.setState({ suggestedPeople })
+            })
+    }
+
+    onClearSuggestions = () => {
+        this.setState({ suggestedPeople: [] })
+    }
+
+    toggleTransferProcess = () => {
+        this.setState({ inTransfer: !this.state.inTransfer, selectedUser: {} });
+    }
+    
+    renderSuggestion = (suggestion) => {
+        return (
+            <span>{ suggestion.firstName + ' ' + suggestion.lastName }</span>
+        )
+    }
+
+    getSuggestionValue = (suggestion) => {
+        return suggestion.firstName + ' ' + suggestion.lastName;
     }
     
     componentWillMount() {
@@ -37,10 +73,6 @@ class ItemModal extends Component {
                 </div>
                 <div className='extra-info'>
                     <span className='serial'>{ item.serialNumber ? item.serialNumber : '' }</span>
-                    <div>
-                        <span>פעיל? </span>
-                        <input className='checkbox' type='checkbox' checked={ isInUse } onChange={ toggleIsInUse } />
-                    </div>
                 </div>
                 <div className='advanced-info'>
                     <div>
@@ -81,9 +113,37 @@ class ItemModal extends Component {
                     ) : null 
                 }
                 <div className='footer'>
-                    <div className='transfer green'>
-                        העבר חתימה
-                    </div>
+                    {
+                        !this.state.inTransfer ? 
+                            <div className='transfer green' onClick={ this.toggleTransferProcess.bind(this) }>
+                                העבר חתימה
+                            </div> :
+                            _.isEmpty(this.state.selectedUser) ? 
+                                <div className='transfer-wrapper'>
+                                    <Suggest
+                                        suggestions={ this.state.suggestedPeople }
+                                        onFetchSuggestions={ this.onFetchSuggestions.bind(this) }
+                                        onClearSuggestions={ this.onClearSuggestions.bind(this) }
+                                        getSuggestionValue={ this.getSuggestionValue.bind(this) }
+                                        renderSuggestion={ this.renderSuggestion.bind(this) } />
+                                    <span className='transfer green'>
+                                        חפש
+                                    </span>
+                                    <div className='transfer red' onClick={ this.toggleTransferProcess.bind(this) }>
+                                        בטל
+                                    </div>
+                                </div> :
+                                <div className='transfer-wrapper'>
+                                    <div className='transfer green'>
+                                        העבר חתימה ל 
+                                        { this.state.selectedUser.firstName + ' ' + this.state.selectedUser.lastName }
+                                    </div>
+                                    <div className='transfer red' onClick={ this.toggleTransferProcess.bind(this) }>
+                                        בטל
+                                    </div>
+                                </div>
+
+                    }
                 </div>
             </div>
         );

@@ -20,13 +20,14 @@ class Backpack extends Component {
 						</div>
 					))
 				}
-				<div className='card-wrapper'>
-                    <div className='item-wrapper'>
+                <div className='card-wrapper'>
+                    <div className='item-wrapper' onClick={()=>(this.props.history.push(`/myCatalog`))}>
                         <div className={ 'item-card add blue'}>
                             <div className='request-item'>
                                 <i className='fa fa-plus' />
                             </div>
                         </div>
+						{ null }
                     </div>
                 </div>
 			</div>
