@@ -18,7 +18,7 @@ $class-red: #dd6137;
     background-color: white;
     border-color: lightgrey;
 
-    &:hover {
+    &.selected, &:hover {
         background-color: lightgrey;
     }
 }
@@ -27,7 +27,7 @@ $class-red: #dd6137;
     background-color: lighten($class-blue, 20%);
     border-color: $class-blue;
 
-    &:hover {
+    &.selected, &:hover {
         background-color: $class-blue;
     }
 }
@@ -36,7 +36,7 @@ $class-red: #dd6137;
     background-color: lighten($class-orange, 20%);
     border-color: $class-orange;
 
-    &:hover {
+    &.selected, &:hover {
         background-color: $class-orange;
     }
 }
@@ -45,7 +45,7 @@ $class-red: #dd6137;
     background-color: lighten($class-green, 20%);
     border-color: $class-green;
 
-    &:hover {
+    &.selected, &:hover {
         background-color: $class-green;
     }
 }
@@ -54,16 +54,16 @@ $class-red: #dd6137;
     background-color: lighten($class-teal, 20%);
     border-color: $class-teal;
 
-    &:hover {
+    &.selected, &:hover {
         background-color: $class-teal;
     }
 }
 
-.orange {
+.red {
     background-color: lighten($class-red, 20%);
     border-color: $class-red;
 
-    &:hover {
+    &.selected, &:hover {
         background-color: $class-red;
     }
 }

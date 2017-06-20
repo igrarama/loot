@@ -40,15 +40,32 @@ class MyInventory extends Component {
             case "תצוגה":
                 return 'orange';
             case "סריאלי":
-                return 'blue';
+                return 'red';
             case "לא סריאלי":
                 return 'blue';
             case "ציוד משרדי":
-                return 'green';
+                return 'teal';
             case "ריהוט":
                 return 'green';
             default:
                 return 'base';
+        }
+    }
+
+    mapItemTypeIcon = (type) => {
+        switch (type) {
+            case "מחשוב":
+                return 'server';
+            case "תצוגה":
+                return 'television';
+            case "סריאלי":
+                return 'barcode';
+            case "ציוד משרדי":
+                return 'pencil';
+            case "ריהוט":
+                return "bath";
+            default:
+                return 'archive';
         }
     }
     
@@ -136,6 +153,7 @@ class MyInventory extends Component {
                         items={ this.props.myItems.filter(this.filterItems.bind(this)).filter(this.searchFilter) }
                         activeItem={ this.activeItem }
                         onSelect={ this.selectItem.bind(this) }
+                        mapItemTypeIcon={ this.mapItemTypeIcon.bind(this) }
                         mapItemTypeColor={ this.mapItemTypeColor.bind(this) } />
                 </div>
             </div>
