@@ -1,3 +1,4 @@
+const path = require('path');
 const http = require('http');
 const helmet = require('helmet');
 const morgan = require('morgan');
@@ -46,6 +47,7 @@ app.get('/auth/me',
 /* Serve Static Files */
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static('dist'));
+  app.use('*', (req, res) => res.sendfile(path.join('dist','index.html')));
 } else {
   require('./dev');
   app.use(require('errorhandler')());
