@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Backpack from '../../components/backpack/backpack.component';
+import RequestCard from '../../components/requestCard/requestCard.component';
+import './mySignature.scss';
 
 const ordersMock = [
     {
         id: 1,
         customer: {
+            orgPath: "nnnn/fdfd/fdsf/fdsf",
             personalNumber: "1234567",
             firstName: "name",
             lastName: "last",
@@ -39,7 +41,8 @@ const ordersMock = [
     },
     {
         id: 2,
-        customer: {
+            customer: {
+                orgPath: "nnnn/fdfd/fdsf/fdsf",
             personalNumber: "1234567",
             firstName: "name2",
             lastName: "last",
@@ -71,27 +74,34 @@ const ordersMock = [
     }
 ]
 
-class MyInventory extends Component {
+class MySignature extends Component {
     render() {
         return (
-            <div id='my-inventory-page'>
-                <Backpack
-                    items={ ordersMock }
-                    mapItemTypeColor={ () => {return 'green'; } } />
+            <div id='my-signature-page'>
+                <div className='backpack'>
+                    {
+                        this.props.items.map((item, i) => (
+                                <RequestCard
+                                    key={ 'item_' + i }
+                                    item={ item }
+                                    typeColor={ () => "green" } />
+                        ))
+                    }
+                </div>
             </div>
         );
     }
 }
 
-MyInventory.propTypes = {
-    myItems: PropTypes.array.isRequired
+MySignature.propTypes = {
+    items: PropTypes.array.isRequired
 };
 
 let mapStateToProps = (store) => {
     // map to correct state
     return {
-        myItems: store.myItems || itemsMock
+        items: store.myItems || ordersMock
     }
 }
 
-export default connect(mapStateToProps)(MyInventory);
+export default connect(mapStateToProps)(MySignature);
