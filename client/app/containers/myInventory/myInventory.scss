@@ -39,11 +39,12 @@
 
             .general-tags {
                 padding: 1em 0 1em 3em;
-                justify-content: flex-end;
+                justify-content: space-around;
+                flex-wrap: wrap;
 
                 .tag {
                     padding: 0.5em;
-                    margin: 0 0.5em;
+                    margin-bottom: 0.5em;
                     border-radius: 3px;
                     display: flex;
                     align-items: center;
