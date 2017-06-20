@@ -15,7 +15,10 @@ class ItemCard extends Component {
 				<div className='modal-bg'></div>
 				<ItemModal
 					item={ this.props.item }
-					onClose={ this.props.onSelect.bind(this, false) } />
+					onClose={ this.props.onSelect.bind(this, false) }
+					isInUse={ this.state.isInUse }
+					toggleIsInUse={ this.toggleIsInUse.bind(this) }
+					typeColor={ this.props.typeColor } />
 			</div>
 		)
 	}
