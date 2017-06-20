@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import RequestCard from '../../components/requestCard/requestCard.component';
+import { fetchOrdersRequest } from '../../../redux/actions/orderActions';
 import './mySignature.scss';
 
 const ordersMock = [
@@ -75,6 +76,11 @@ const ordersMock = [
 ]
 
 class MySignature extends Component {
+
+    componentWillMount(){
+        this.props.dispatch(fetchOrdersRequest());
+    }
+
     render() {
         return (
             <div id='my-signature-page'>
@@ -99,7 +105,7 @@ MySignature.propTypes = {
 let mapStateToProps = (store) => {
     // map to correct state
     return {
-        items: store.myItems || ordersMock
+        items: store.orders || ordersMock
     }
 }
 
