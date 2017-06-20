@@ -23,7 +23,6 @@
             }
             
             .search {
-                padding: 1em 3em 1em 0;
                 justify-content: flex-start;
 
                 input {
@@ -32,6 +31,8 @@
                     outline: none;
                     width: 50%;
                     padding: 0 0.1em;
+                    margin: auto;
+                    margin-right: 3em;
                     border-bottom: 1px solid black;
                 }
             }
