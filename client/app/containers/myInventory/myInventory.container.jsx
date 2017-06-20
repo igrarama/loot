@@ -142,20 +142,18 @@ class MyInventory extends Component {
         );
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (this.props.generalTags != nextProps.generalTags) {
-            let filters = [];
-            nextProps.generalTags.map((tag, i) => {
-                let key = 'generalTag_' + i;
-                let tagFilter = {
-                    key: ['productDef', 'type', 'tags'],
-                    value: tag,
-                    id: key
-                }
-                filters.push(tagFilter);
-            })
-            this.setState({ filterList: filters });
-        }
+    componentWillMount() {
+        let filters = [];
+        this.props.generalTags.map((tag, i) => {
+            let key = 'generalTag_' + i;
+            let tagFilter = {
+                key: ['productDef', 'type', 'tags'],
+                value: tag,
+                id: key
+            }
+            filters.push(tagFilter);
+        })
+        this.setState({ filterList: filters });
     }
 }
 

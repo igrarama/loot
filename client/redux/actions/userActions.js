@@ -30,6 +30,7 @@ export function fetchUserItems(userId) {
       items.map(item => 
         fetchProductType(item.productDef.type)
         .then(type => item.productDef.type = type)
+        .then(() => item)
       )
     ).then(promises => Promise.all(promises));
 }
