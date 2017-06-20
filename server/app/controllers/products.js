@@ -21,12 +21,13 @@ module.exports.query = (req, res) => {
 
 module.exports.create = (req, res) => {
     const product = new Product(req.body);
-    product.save((err) => {
+    product.save((err, newProduct) => {
         if (err) {
             res.status(400).send(err);
         }
         else {
-            res.status(204).send();
+            res.set('Location', '/products/' + newProduct.id);
+            res.status(200).send();
         }
     });
 }

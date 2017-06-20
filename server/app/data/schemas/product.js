@@ -5,6 +5,7 @@ const productSchema = mongoose.Schema({
     currentOwner: { type: mongoose.Schema.Types.ObjectId, ref: 'Person' },
     isInUse: Boolean,
     issueDate: Date,
+    lastTransactionTime: Date,
     serialNumber: String,
     productAttributes: mongoose.Schema.Types.Mixed
 });
