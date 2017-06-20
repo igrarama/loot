@@ -35,7 +35,7 @@ class ItemCard extends Component {
 		let { item, expanded, typeColor, onSelect } = this.props;
 
 		return (
-		   <div className='item-wrapper'>
+		   <div className='item-card'>
 				<div
 					className={ 'item-card ' + typeColor}
 					onClick={ onSelect.bind(this, true) }>

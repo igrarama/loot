@@ -10,25 +10,21 @@ class Backpack extends Component {
 			<div className='backpack'>
 				{
 					this.props.items.map((item, i) => (
-						<div className='card-wrapper' key={ 'item_' + i }>
-							<ItemCard
-								item={ item }
-								expanded={ this.props.activeItem == item }
-								onSelect={ this.props.onSelect.bind(this, item) }
-								typeColor={ this.props.mapItemTypeColor(item.productDef.type.tags[0]) } />
-						</div>
+						<ItemCard
+							key={ 'item_' + i }
+							item={ item }
+							expanded={ this.props.activeItem == item }
+							onSelect={ this.props.onSelect.bind(this, item) }
+							typeColor={ this.props.mapItemTypeColor(item.productDef.type.tags[0]) } />
 					))
 				}
-                <div className='card-wrapper'>
-                    <div className='item-wrapper'>
-                        <div className={ 'item-card add blue'}>
-                            <div className='request-item'>
-                                <i className='fa fa-plus' />
-                            </div>
-                        </div>
-						{ null }
-                    </div>
-                </div>
+				<div className='item-card'>
+					<div className={ 'item-card add blue'}>
+						<div className='request-item'>
+							<i className='fa fa-plus' />
+						</div>
+					</div>
+				</div>
 			</div>
 		);
 	}

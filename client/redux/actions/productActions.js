@@ -29,3 +29,18 @@ export let fetchProductHistory = (product) => {
 		.then((response) => response.json())
 		.then((history) => history)
 }
+
+export let createNewTransaction = (sender, reciever, product) => {
+	let body = {
+		sender,
+		reciever,
+		product
+	}
+	
+	let options = {
+		method: 'POST',
+		bosy: JSON.stringify(body)
+	}
+	return fetch('/api/transactions', options)
+		.then((response) => response.ok)
+}
