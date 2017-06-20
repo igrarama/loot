@@ -51,7 +51,6 @@ class ItemCard extends Component {
 						</div>
 						<div className='extra-info'>
 							<span className='serial'>{ item.serialNumber ? item.serialNumber : '' }</span>
-							<input className='checkbox' type='checkbox' disabled checked={ this.state.isInUse } />
 						</div>
 					</div>
 				</div>

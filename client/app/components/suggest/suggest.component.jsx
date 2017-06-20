@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Autosuggest from 'react-autosuggest';
 
+import './suggest.scss';
+
 class Suggest extends Component {
 	constructor(props) {
 		super(props);

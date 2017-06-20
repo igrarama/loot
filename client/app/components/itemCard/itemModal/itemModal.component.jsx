@@ -73,10 +73,6 @@ class ItemModal extends Component {
                 </div>
                 <div className='extra-info'>
                     <span className='serial'>{ item.serialNumber ? item.serialNumber : '' }</span>
-                    <div>
-                        <span>פעיל? </span>
-                        <input className='checkbox' type='checkbox' checked={ isInUse } onChange={ toggleIsInUse } />
-                    </div>
                 </div>
                 <div className='advanced-info'>
                     <div>
