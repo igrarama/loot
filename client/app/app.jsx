@@ -19,7 +19,9 @@ class App extends Component {
     return (
       <div className='wrapper'>
         <header>
-          ברוך הבא
+          <h1 style={{ margin: 0 }} >
+            Loot
+          </h1>
         </header>
         <main>
           { current ? children : null }

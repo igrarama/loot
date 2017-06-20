@@ -32,12 +32,15 @@ class ItemCard extends Component {
 	}
 
 	render() {
-		let { item, expanded, typeColor, onSelect } = this.props;
+		let { item, expanded, typeColor, typeIcon, onSelect } = this.props;
 
 		return (
 		   <div className='item-wrapper'>
+		   	<div className={ 'item-logo selected ' + typeColor }>
+		   		<i className={ 'fa fa-2x fa-' + typeIcon } aria-hidden="true"></i>
+		   	</div>
 				<div
-					className={ 'item-card ' + typeColor}
+					className={ 'item-card ' + typeColor }
 					onClick={ onSelect.bind(this, true) }>
 					<div className='basic-info'>
 						<h4>{ item.productDef.name }</h4>
@@ -58,11 +61,13 @@ ItemCard.propTypes = {
 	item: PropTypes.object.isRequired,
 	expanded: PropTypes.bool,
 	typeColor: PropTypes.string,
+	typeIcon: PropTypes.string,
 	onSelect: PropTypes.func
 };
 
 ItemCard.defaultProps = {
 	typeColor: 'base',
+	typeIcon: 'archive',
 	expanded: false,
 	onSelect: () => {}
 }
