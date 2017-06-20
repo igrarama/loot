@@ -1,11 +1,21 @@
 @import "../../styles/colorConstants.scss";
-$card-min-height: 5em;
+
+.order{
+  *{
+    margin: 1em;
+  }
+  .person{
+    padding: 1em;
+    .info, .contact {
+      display: flex;
+    }
+  }
+}
 
 .item-card {
   border-radius: 3px;
   border: 2px solid black;
   padding: 1em;
-  min-height: $card-min-height;
   align-items: center;
   justify-content: center;
 
