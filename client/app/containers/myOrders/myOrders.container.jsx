@@ -16,7 +16,7 @@ class Orders extends Component {
   render() {
     let { orders } = this.props;
 
-    if(order.length == 0)
+    if(orders.length == 0)
       return null; // Display Nothing in no orders
 
     return (
