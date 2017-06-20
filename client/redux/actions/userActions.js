@@ -2,25 +2,16 @@
 import * as ActionTypes from '../consts/actionTypes';
 import { fetchProductType } from './productActions';
 
-export function authenticate(email, password) {
-  return dispatch => 
-    fetch('/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, password })
-    })
-      .then(res => res.json())
-      .then(user => dispatch(populate_user(user)));
-}
-
 export function fetchUser() {
   return dispatch => 
-    fetch('/auth/me')
+    fetch('/auth/me', { credentials: 'include' })
       .then(res => res.json())
-      .then(user => console.log(user))
-      .then(user => dispatch(populate_user(user)));
+      .then(user => {
+        if(user._id)
+          dispatch(populate_user(user));
+        else
+          dispatch(set_user(user));
+      });
 }
 
 

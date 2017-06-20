@@ -35,25 +35,18 @@ class Login extends Component {
     })
   }
 
-  login(e){
-    e.preventDefault();
-
-    let { email, password } = this.state;
-
-    this.props.dispatch(authenticate(email, password));
-  }
 
   render() {
     return (
       <div className="login">
-        <form onSubmit={this.login.bind(this)}>
+        <form action="/auth/login" method="post">
           <div className="field">
             <label>מייל</label>
-            <input type="email" value={ this.state.email } onChange={ this.handleChange.bind(this, 'email') } />
+            <input type="email" name="email" value={ this.state.email } onChange={ this.handleChange.bind(this, 'email') } />
           </div>
           <div className="field">
             <label>סיסמה</label>
-            <input type="password" value={ this.state.password } onChange={ this.handleChange.bind(this, 'password') } />
+            <input type="password" name="password" value={ this.state.password } onChange={ this.handleChange.bind(this, 'password') } />
           </div>
           <input type="submit" />
         </form>

@@ -11,22 +11,24 @@ class App extends Component {
   componentWillMount() {
     this.props.dispatch(fetchProductTypes());
     this.props.dispatch(fetchProductTypeTags());
-
     this.props.dispatch(fetchUser());
   }
   
   render() {
+    let { current, children } = this.props;
     return (
       <div className='wrapper'>
         <header>
           ברוך הבא
         </header>
         <main>
-          { this.props.children }
+          { current ? children : null }
         </main>
       </div>
     );
   }
 }
 
-export default connect()(App);
+export default connect(state => ({
+  current: state.user.get('current')
+}))(App);

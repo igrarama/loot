@@ -5,17 +5,11 @@ const LocalStrategy = require('passport-local').Strategy;
 
 module.exports = (passport) => {
 
-  passport.serializeUser((user, done) => {
-    console.log('serializeUser', user);
-    done(null, user._id);
-  });
+  passport.serializeUser((user, done) => done(null, user._id));
 
   passport.deserializeUser((id, done) => {
     mongoose.model('Person').findById(id)
-      .then(user => {
-        console.log('deserializeUser', user);
-        done(null, user);
-      })
+      .then(user => done(null, user))
       .catch(err => done(err));
   });
 
@@ -25,7 +19,6 @@ module.exports = (passport) => {
       mongoose.model('Person')
         .findOne({ email, password: md5(password) })
         .then(user => {
-          console.log(user);
           if(user)
             done(null, user);
           else

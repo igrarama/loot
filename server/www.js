@@ -22,6 +22,7 @@ app.use(morgan('dev'));
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(sessions(gconf.get('server.sessions')));
 
 /* DB */
@@ -37,7 +38,7 @@ app.use('/api', require('./app/routes'));
 
 app.post('/auth/login',
   passport.authenticate('local'),
-  (req, res) => res.send(req.user));
+  (req, res) => res.redirect('/'));
 
 app.get('/auth/me',
   (req, res) => res.send(req.user || {}));
