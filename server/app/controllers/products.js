@@ -18,3 +18,15 @@ module.exports.query = (req, res) => {
         res.status(400).send(err);
     });
 }
+
+module.exports.create = (req, res) => {
+    const product = new Product(req.body);
+    product.save((err) => {
+        if (err) {
+            res.status(400).send(err);
+        }
+        else {
+            res.status(204).send();
+        }
+    });
+}
