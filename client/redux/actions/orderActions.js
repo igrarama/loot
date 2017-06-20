@@ -3,7 +3,7 @@ import * as actionTypes from '../consts/actionTypes';
 export function fetchOrdersRequest(){
     return (dispatch) => {
         return fetch("/api/orders")
-                .then(res => res).then((res) => {
+                .then(res => res.json()).then((res) => {
                     dispatch({
                         type: actionTypes.GET_ORDERS,
                         orders: res

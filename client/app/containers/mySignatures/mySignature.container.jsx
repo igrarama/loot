@@ -105,7 +105,7 @@ MySignature.propTypes = {
 let mapStateToProps = (store) => {
     // map to correct state
     return {
-        items: store.myItems || ordersMock
+        items: store.orders || ordersMock
     }
 }
 
