@@ -37,3 +37,18 @@ export let updateTransaction = (id, transactionUpdate) => {
 		body: JSON.stringify(transactionUpdate)
 	}).then((response) => response.status);
 }
+
+export let createNewTransaction = (sender, reciever, product) => {
+	let body = {
+		sender,
+		reciever,
+		product
+	}
+	
+	let options = {
+		method: 'POST',
+		bosy: JSON.stringify(body)
+	}
+	return fetch('/api/transactions', options)
+		.then((response) => response.ok)
+}

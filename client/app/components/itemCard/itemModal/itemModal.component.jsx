@@ -80,6 +80,11 @@ class ItemModal extends Component {
                         </table>
                     ) : null 
                 }
+                <div className='footer'>
+                    <div className='transfer green'>
+                        העבר חתימה
+                    </div>
+                </div>
             </div>
         );
     }

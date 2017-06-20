@@ -15,18 +15,18 @@ class Backpack extends Component {
 								item={ item }
 								expanded={ this.props.activeItem == item }
 								onSelect={ this.props.onSelect.bind(this, item) }
-								typeColor={ this.props.mapItemTypeColor(item.productDef.type.tags[0]) } />
+								typeColor={ this.props.mapItemTypeColor(item.productDef.type.tags[0]) }
+								typeIcon={ this.props.mapItemTypeIcon(item.productDef.type.tags[0]) } />
 						</div>
 					))
 				}
-                <div className='card-wrapper'>
+				<div className='card-wrapper'>
                     <div className='item-wrapper'>
                         <div className={ 'item-card add blue'}>
                             <div className='request-item'>
                                 <i className='fa fa-plus' />
                             </div>
                         </div>
-						{ null }
                     </div>
                 </div>
 			</div>
@@ -37,6 +37,7 @@ class Backpack extends Component {
 Backpack.propTypes = {
 	items: PropTypes.array.isRequired,
 	mapItemTypeColor: PropTypes.func.isRequired,
+  mapItemTypeIcon: PropTypes.func.isRequired,
 	activeItem: PropTypes.object,
 	onSelect: PropTypes.func
 };

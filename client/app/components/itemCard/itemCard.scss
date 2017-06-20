@@ -1,79 +1,86 @@
-@import '../../styles/colorConstants.scss';
-@import '../../styles/_colorClasses.scss';
-$card-min-height: 5em;
+@import '../../styles/colors.scss';
 
 .item-wrapper {
-    flex-grow: 1;
+    height: calc(100% - 4em);
+    width: 100%;
+}
+
+$logo-size: 6em;
+
+.item-logo {
+    height: 0;
+    width: 0;
+    padding: $logo-size / 2;
+    border-radius: 50%;
+    background-color: #dd6137;
+    margin: auto;
+    margin-bottom: - ( $logo-size / 3 ) ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .item-card, .item-expanded {
     border-radius: 3px;
     border: 2px solid transparent;
     padding: 0.5em;
-    min-height: $card-min-height;
+    
+    height: calc(100% - 1em - 4px);
+    width: calc(100% - 1em - 4px);
+
     display: flex;
     flex-direction: column;
-    
     h4 {
         padding: 0;
         margin: 0;
         border-bottom: 1px solid black;
         margin-bottom: 0.5em;
     }
-
     .serial {
         font-size: 0.8em;
         opacity: 0.8;
-
         &:after {
             content: '#';
         }
     }
-
     .extra-info {
         display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: space-between;
         flex-grow: 1;
         align-items: flex-end;
-
         .checkbox {
             &:hover {
                 cursor: pointer;
             }
         }
     }
-
     &:hover {
         cursor: pointer;
     }
-
     &.base {
         background-color: white;
         border-color: lightgrey;
-
         &:hover {
             background-color: lightgrey;
         }
     }
-
     &.blue {
-        background-color: $color-primary-1;
-        border-color: $color-primary-3;
-
+        background-color: lighten($primary, 50%);
+        border-color: $primary;
         &:hover {
-            background-color: $color-primary-3;
-
+            background-color: $primary;
             .request-item {
-                border-color: $color-primary-1;
-                color: $color-primary-1;
+                border-color: lighten($primary, 50%);
+                color: lighten($primary, 50%);
             }
         }
-
         &.add {
             align-content: center;
             justify-content: center;
+            margin-top: ( 2 * $logo-size / 3 );
         }
-        
         .request-item {
             align-self: center;
             width: 60px;
@@ -82,36 +89,9 @@ $card-min-height: 5em;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            border: 2px solid $color-primary-3;
+            border: 2px solid $primary;
             font-size: 2em;
-            color: $color-primary-3;
-        }
-    }
-
-    &.purple {
-        background-color: $color-secondary-1-1;
-        border-color: $color-secondary-1-3;
-
-        &:hover {
-            background-color: $color-secondary-1-3;
-        }
-    }
-
-    &.green {
-        background-color: $color-secondary-2-1;
-        border-color: $color-secondary-2-3;
-
-        &:hover {
-            background-color: $color-secondary-2-3;
-        }
-    }
-
-    &.orange {
-        background-color: $color-complement-1;
-        border-color: $color-complement-3;
-
-        &:hover {
-            background-color: $color-complement-3;
+            color: $primary;
         }
     }
 }
@@ -126,7 +106,6 @@ $card-min-height: 5em;
     display: flex;
     align-items: center;
     justify-content: center;
-
     .modal-bg {
         position: fixed;
         top: 0;
@@ -136,6 +115,6 @@ $card-min-height: 5em;
         background-color: black;
         opacity: 0.3;
         filter: blur(5px);
-        z-index: 1;
+        z-index: 10;
     }
 }

@@ -40,6 +40,7 @@ module.exports = {
       { test: /\.(js|jsx)$/, use: ['react-hot-loader', 'babel-loader'], include: path.join(__dirname, 'client') },
       { test: /\.(css|scss)$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
       { test: /\.(woff2?|ttf|svg|eot)(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader' },
+      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=10000' }
     ]
   }
 };
