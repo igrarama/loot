@@ -21,11 +21,12 @@ class Backpack extends Component {
 				}
                 <div className='card-wrapper'>
                     <div className='item-wrapper'>
-                        <div className={ 'item-card blue'}>
+                        <div className={ 'item-card add blue'}>
                             <div className='request-item'>
                                 <i className='fa fa-plus' />
                             </div>
                         </div>
+						{ null }
                     </div>
                 </div>
 			</div>

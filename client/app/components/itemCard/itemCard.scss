@@ -9,12 +9,40 @@ $card-min-height: 5em;
 .item-card {
     border-radius: 3px;
     border: 2px solid transparent;
-    padding: 1em;
+    padding: 0.5em;
     min-height: $card-min-height;
     display: flex;
-    align-items: center;
-    justify-content: center;  
+    flex-direction: column;
     
+    h4 {
+        padding: 0;
+        margin: 0;
+        border-bottom: 1px solid black;
+        margin-bottom: 0.5em;
+    }
+
+    .serial {
+        font-size: 0.8em;
+        opacity: 0.8;
+
+        &:after {
+            content: '#';
+        }
+    }
+
+    .extra-info {
+        display: flex;
+        justify-content: space-between;
+        flex-grow: 1;
+        align-items: flex-end;
+
+        .checkbox {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
     &:hover {
         cursor: pointer;
     }
@@ -41,7 +69,13 @@ $card-min-height: 5em;
             }
         }
 
+        &.add {
+            align-content: center;
+            justify-content: center;
+        }
+        
         .request-item {
+            align-self: center;
             width: 60px;
             height: 60px;
             display: flex;
