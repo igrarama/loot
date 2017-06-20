@@ -7,6 +7,10 @@ import './catalog.scss';
 class Catalog extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            filterList: [],
+            inputValue: ''
+        }
     }
 
 renderInput= (product) =>
@@ -31,11 +35,23 @@ renderTitle= () =>
     {
         return(<span className="title">מחשבים</span>);
     }
+
+    onSearch = (event) => {
+        let { value } = event.target;
+        this.setState({ inputValue: value });
+    }
+
     render() {
         return(
             <div id='catalog-page'>
                 <div className='header'>
                     <h3>קטלוג מוצרים</h3>
+                </div>
+                <div className='search'>
+                    <input
+                        placeholder={'חיפוש'}
+                        onChange={ this.onSearch.bind(this) }
+                        value={ this.state.inputValue } />
                 </div>
                 <div className="catalog">
                     {
