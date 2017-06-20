@@ -7,6 +7,8 @@ import _ from 'lodash';
 import './myInventory.scss';
 import Backpack from '../../components/backpack/backpack.component';
 
+import { fetchUserItems } from '../../../redux/actions/userActions';
+
 class MyInventory extends Component {
     constructor(props) {
         super(props);
@@ -19,23 +21,31 @@ class MyInventory extends Component {
     get activeItem(){
 		let { match, myItems } = this.props;
 		if(match.params.id){
-			return myItems.find(item => item.id == match.params.id);
+			return myItems.find(item => item._id == match.params.id);
 		}
 	}
 
     selectItem(item, isSelected){
 		if(isSelected){
-			this.props.history.push(`/inventory/${item.id}`);
+			this.props.history.push(`/inventory/${item._id}`);
 		} else {
 			this.props.history.push(`/inventory`);
 		}
 	}
     
-    mapItemTypeColor = (type) => {
+    mapItemTypeColor = (type) => {     
         switch (type) {
-            case 'tech':
+            case "מחשוב":
                 return 'orange';
-            case 'army':
+            case "תצוגה":
+                return 'orange';
+            case "סריאלי":
+                return 'blue';
+            case "לא סריאלי":
+                return 'blue';
+            case "ציוד משרדי":
+                return 'green';
+            case "ריהוט":
                 return 'green';
             default:
                 return 'base';
@@ -61,9 +71,12 @@ class MyInventory extends Component {
         let { filterList } = this.state;
         let flag = false;
         filterList.map(filter => {
-            let filteredItems =  _.get(item, filter.key);
-            if (filteredItems && filteredItems.indexOf(filter.value) != -1)
-                flag = true;
+            let tags =  _.get(item, filter.key);
+            let tagged = false;
+            tags ? tags.map((tag) => {
+                if (tag.indexOf(filter.value) != -1)
+                    flag = true;
+            }) : null;
         })
         return flag;
     }
@@ -71,7 +84,7 @@ class MyInventory extends Component {
     searchFilter = (item) => {
         if (!this.state.inputValue)
             return true;
-        return JSON.stringify(item).indexOf(this.state.inputValue) != -1;
+        return JSON.stringify(item).toLowerCase().indexOf(this.state.inputValue) != -1;
     }
     
     onSearch = (event) => {
@@ -96,8 +109,8 @@ class MyInventory extends Component {
                                 this.props.generalTags.map((tag, i) => {
                                     let key = 'generalTag_' + i;
                                     let tagFilter = {
-                                        key: ['type', 'title'],
-                                        value: tag.title,
+                                        key: ['productDef', 'type', 'tags'],
+                                        value: tag,
                                         id: key
                                     }
                                     let { filterList } = this.state;
@@ -107,10 +120,10 @@ class MyInventory extends Component {
                                     return (
                                         <span
                                             key={ key }
-                                            className={ 'tag ' + (filterList.find((filter) => filter.id == key) ? 'active' : '') + ' ' + this.mapItemTypeColor(tag.title) }
+                                            className={ 'tag ' + (filterList.find((filter) => filter.id == key) ? 'active' : '') + ' ' + this.mapItemTypeColor(tag) }
                                             onClick={ onClick }>
                                             <i className='fa fa-tag' />
-                                            { tag.name }
+                                            { tag }
                                         </span>
                                     )
                                 })
@@ -130,18 +143,18 @@ class MyInventory extends Component {
         );
     }
 
-    componentDidMount() {
+    componentWillMount() {
         let filters = [];
         this.props.generalTags.map((tag, i) => {
             let key = 'generalTag_' + i;
             let tagFilter = {
-                key: ['type', 'title'],
-                value: tag.title,
+                key: ['productDef', 'type', 'tags'],
+                value: tag,
                 id: key
             }
             filters.push(tagFilter);
         })
-        this.setState({ filterList: filters })
+        this.setState({ filterList: filters });
     }
 }
 
@@ -151,8 +164,8 @@ MyInventory.propTypes = {
 
 let mapStateToProps = (store) => {
     return {
-        myItems: store.user.myItems,
-        generalTags: store.settings.generalTags
+        myItems: store.user.get('items') || [],
+        generalTags: store.settings.get('generalTags') || []
     }
 }
 

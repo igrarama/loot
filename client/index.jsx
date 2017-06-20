@@ -4,62 +4,13 @@ import createHistory from 'history/createBrowserHistory';
 
 import Root from './root/Root';
 import configureStore from './redux/store/configureStore';
+import { Map } from 'immutable';
 
 const history = createHistory();
 
 let initialState = {
-  user: {
-    myItems: [
-      {
-          id: 1,
-          type: {
-              title: 'tech'
-          }
-      },
-      {
-          id: 2,
-          type: {
-              title: 'army'
-          }
-      },
-      {
-          id: 3,
-          type: {
-              title: 'army'
-          }
-      },
-      {
-          id: 4,
-          type: {
-              title: 'tech'
-          }
-      },
-      {
-          id: 5,
-          type: {
-              title: 'tech'
-          }
-      },
-      {
-          id: 6,
-          type: {
-              title: 'army'
-          }
-      }
-    ]
-  },
-  settings: {
-    generalTags: [
-      {
-          title: 'tech',
-          name: 'מחשוב'
-      },
-      {
-          title: 'army',
-          name: 'צבאי'
-      }
-    ]
-  }
+  user: Map({}),
+  settings: Map({})
 }
 
 const store = configureStore(history, initialState);

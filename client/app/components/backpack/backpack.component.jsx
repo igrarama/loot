@@ -16,17 +16,18 @@ class Backpack extends Component {
 								item={ item }
 								expanded={ this.props.activeItem == item }
 								onSelect={ this.props.onSelect.bind(this, item) }
-								typeColor={ this.props.mapItemTypeColor(item.type.title) } />
+								typeColor={ this.props.mapItemTypeColor(item.productDef.type.tags[0]) } />
 						</div>
 					))
 				}
                 <div className='card-wrapper'>
                     <div className='item-wrapper' onClick={()=>(this.props.history.push(`/catalog`))}>
-                        <div className={ 'item-card blue'}>
+                        <div className={ 'item-card add blue'}>
                             <div className='request-item'>
-                                <i className='fa fa-plus'/>
+                                <i className='fa fa-plus' />
                             </div>
                         </div>
+						{ null }
                     </div>
                 </div>
 			</div>
