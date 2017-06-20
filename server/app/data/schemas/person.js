@@ -10,7 +10,8 @@ const personSchema = mongoose.Schema({
     enrollmentDate: Date,
     releaseDate: Date,
     voip: String,
-    phoneNumber: String
+    phoneNumber: String,
+    role: String
 });
 
 const Person = mongoose.model('Person', personSchema);

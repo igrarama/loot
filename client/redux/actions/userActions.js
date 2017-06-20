@@ -1,44 +1,55 @@
+
 import * as ActionTypes from '../consts/actionTypes';
 import { fetchProductType } from './productActions';
 
-// TODO: get user id (auth)
-export let fetchUserDetails = (userId) => {
-	return (dispatch) => fetch('/api/people/' + userId)
-		.then((response) => response.json())
-		.then((dits) => {
-			return dispatch({
-				type: ActionTypes.LOAD_USER_DETAILS,
-				dits
-			})
-		})
+export function fetchUser() {
+  return dispatch => 
+    fetch('/auth/me', { credentials: 'include' })
+      .then(res => res.json())
+      .then(user => {
+        if(user._id)
+          dispatch(populate_user(user));
+        else
+          dispatch(set_user(user));
+      });
 }
 
-// get user inventory
-export let fetchUserItems = (userId) => {
-	return (dispatch) => fetch('/api/products?currentOwner=' + '5948366558df473e9cab1c5c')
-		.then((response) => response.json())
-		.then((items) => {
-			let fullItems = [];
-			return new Promise((resolve, reject) => {
-				items.map((item) => {
-					let newItem = {...item};
-					fetchProductType(newItem.productDef.type)
-						.then((type) => {
-							newItem.productDef.type = type;
-							fullItems.push(newItem);
-							if (fullItems.length == items.length)
-								resolve(fullItems);
-						});
-				})
-			})
-			.then((items) => {
-				return items;
-			})
-		})
-		.then((items) => {
-			return dispatch({
-				type: ActionTypes.LOAD_USER_ITEMS,
-				items
-			})
-		})
+
+function populate_user(user){
+  return dispatch => fetchUserItems(user._id)
+    .then(items => {
+      dispatch(set_user(user));
+      dispatch({ type: ActionTypes.LOAD_USER_ITEMS, items });
+    });
 }
+
+export function fetchUserItems(userId) {
+  return fetch('/api/products?currentOwner=' + userId)
+    .then((response) => response.json())
+    .then(items => 
+      items.map(item => 
+        fetchProductType(item.productDef.type)
+        .then(type => item.productDef.type = type)
+      )
+    ).then(promises => Promise.all(promises));
+}
+
+
+export function set_user(user){
+  return {
+    type: ActionTypes.SET_USER,
+    user
+  };
+}
+
+// export let fetchUserDetails = (userId) => {
+// 	return (dispatch) => fetch('/api/people/' + userId)
+// 		.then((response) => response.json())
+// 		.then((dits) => {
+// 			return dispatch({
+// 				type: ActionTypes.LOAD_USER_DETAILS,
+// 				dits
+// 			});
+// 		});
+// };
+
