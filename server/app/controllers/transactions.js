@@ -18,3 +18,26 @@ module.exports.query = (req, res) => {
         res.status(400).send(err);
     });
 }
+
+module.exports.create = (req, res) => {
+    const transaction = new Transaction(req.body);
+    transaction.save((err) => {
+        if (err) {
+            res.status(400).send(err);
+        }
+        else {
+            res.status(204).send();
+        }
+    });
+}
+
+module.exports.update = (req, res) => {
+    Transaction.updateOne({ _id: req.params.id }, req.body, (err) => {
+        if (err) {
+            res.status(400).send(err);
+        }
+        else {
+            res.status(204).send();
+        }
+    });
+}
