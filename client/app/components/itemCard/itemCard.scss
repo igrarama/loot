@@ -1,98 +1,97 @@
-@import '../../styles/colorConstants.scss';
-// @import '../../styles/_colorClasses.scss';
-
-$shadow-col: #aac1c7;
-$card-width: 14rem;
-$card-height: 18rem;
+@import '../../styles/colors.scss';
 
 .item-wrapper {
-    flex-grow: 1;
+    height: calc(100% - 4em);
+    width: 100%;
+}
+
+$logo-size: 6em;
+
+.item-logo {
+    height: 0;
+    width: 0;
+    padding: $logo-size / 2;
+    border-radius: 50%;
+    background-color: #dd6137;
+    margin: auto;
+    margin-bottom: - ( $logo-size / 3 ) ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .item-card, .item-expanded {
-    width: $card-width;
-    height: $card-height;
+    border-radius: 3px;
+    border: 2px solid transparent;
+    padding: 0.5em;
+    
+    height: calc(100% - 1em - 4px);
+    width: calc(100% - 1em - 4px);
 
-    background-color: #f9fbfb;
-    border-radius: 6px;
-
-    position: relative;
     display: flex;
     flex-direction: column;
-
-    color: #5a6c7a;
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: .05rem;
-    
-    box-shadow: 0 2rem 4rem $shadow-col;
-
-    &:after {
-        content: "";
-        display: block;
-        position: absolute;
-        top:0;
-        left: 0;
-        width: $card-width - 3rem;
-        height: $card-height / 4;
-        transform: translate(1.5rem, $card-height);
+    h4 {
+        padding: 0;
+        margin: 0;
+        border-bottom: 1px solid black;
+        margin-bottom: 0.5em;
     }
-
-    
-    .card-icon {
-        flex-grow: 1;
+    .serial {
+        font-size: 0.8em;
+        opacity: 0.8;
+        &:after {
+            content: '#';
+        }
+    }
+    .extra-info {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        padding: 2em 0.5em 0 0.5em;
-
-        .fa {
-            background-color: black;
-            color: white;
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
+        flex-grow: 1;
+        align-items: flex-end;
+        .checkbox {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    &:hover {
+        cursor: pointer;
+    }
+    &.base {
+        background-color: white;
+        border-color: lightgrey;
+        &:hover {
+            background-color: lightgrey;
+        }
+    }
+    &.blue {
+        background-color: lighten($primary, 50%);
+        border-color: $primary;
+        &:hover {
+            background-color: $primary;
+            .request-item {
+                border-color: lighten($primary, 50%);
+                color: lighten($primary, 50%);
+            }
+        }
+        &.add {
+            align-content: center;
+            justify-content: center;
+            margin-top: ( 2 * $logo-size / 3 );
+        }
+        .request-item {
+            align-self: center;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        h4 {
-            padding: 0;
-            margin: 0;
-            margin-bottom: 0.5em;
-            text-align: center;
-        }
-    }
-
-    .item-info {
-        width: 90%;
-        margin: 0 auto;
-        padding: 0.5em 0;
-        border-top: 2px solid black;
-        height: $card-height / 4;
-
-        .serial {
-            font-size: 0.8em;
-            opacity: 0.8;
-
-            &:after {
-                content: '#';
-            }
-        }
-
-        .extra-info {
-            display: flex;
-            justify-content: space-between;
-            flex-grow: 1;
-            align-items: flex-end;
-
-            .checkbox {
-                &:hover {
-                    cursor: pointer;
-                }
-            }
+            border-radius: 50%;
+            border: 2px solid $primary;
+            font-size: 2em;
+            color: $primary;
         }
     }
 }
@@ -107,7 +106,6 @@ $card-height: 18rem;
     display: flex;
     align-items: center;
     justify-content: center;
-
     .modal-bg {
         position: fixed;
         top: 0;

@@ -10,21 +10,25 @@ class Backpack extends Component {
 			<div className='backpack'>
 				{
 					this.props.items.map((item, i) => (
-						<ItemCard
-							key={ 'item_' + i }
-							item={ item }
-							expanded={ this.props.activeItem == item }
-							onSelect={ this.props.onSelect.bind(this, item) }
-							typeColor={ this.props.mapItemTypeColor(item.productDef.type.tags[0]) } />
+						<div className='card-wrapper' key={ 'item_' + i }>
+							<ItemCard
+								item={ item }
+								expanded={ this.props.activeItem == item }
+								onSelect={ this.props.onSelect.bind(this, item) }
+								typeColor={ this.props.mapItemTypeColor(item.productDef.type.tags[0]) }
+								typeIcon={ this.props.mapItemTypeIcon(item.productDef.type.tags[0]) } />
+						</div>
 					))
 				}
-				<div className='item-card'>
-					<div className={ 'card-icon' }>
-						<div className='icon-wrapper'>
-							<i className='fa fa-4x fa-plus' />
-						</div>
-					</div>
-				</div>
+				<div className='card-wrapper'>
+                    <div className='item-wrapper'>
+                        <div className={ 'item-card add blue'}>
+                            <div className='request-item'>
+                                <i className='fa fa-plus' />
+                            </div>
+                        </div>
+                    </div>
+                </div>
 			</div>
 		);
 	}
@@ -33,6 +37,7 @@ class Backpack extends Component {
 Backpack.propTypes = {
 	items: PropTypes.array.isRequired,
 	mapItemTypeColor: PropTypes.func.isRequired,
+  mapItemTypeIcon: PropTypes.func.isRequired,
 	activeItem: PropTypes.object,
 	onSelect: PropTypes.func
 };

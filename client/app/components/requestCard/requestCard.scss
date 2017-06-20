@@ -1,4 +1,4 @@
-@import "../../styles/colorConstants.scss";
+@import "../../styles/colors.scss";
 
 .order{
   border-radius: 3px;
@@ -21,55 +21,10 @@
     float: left;
     .btn-success{
       //todo: fix colors
-      background-color: $color-secondary-2-3;
+      background-color: $primary;
     }
     .btn-error{
-      background-color: $color-complement-3;
-    }
-  }
-
-  &.base {
-    background-color: white;
-    border-color: lightgrey;
-
-    &:hover {
-      background-color: lightgrey;
-    }
-  }
-
-  &.blue {
-    background-color: $color-primary-1;
-    border-color: $color-primary-3;
-
-    &:hover {
-      background-color: $color-primary-3;
-    }
-  }
-
-  &.purple {
-    background-color: $color-secondary-1-1;
-    border-color: $color-secondary-1-3;
-
-    &:hover {
-      background-color: $color-secondary-1-3;
-    }
-  }
-
-  &.green {
-    background-color: $color-secondary-2-1;
-    border-color: $color-secondary-2-3;
-
-    &:hover {
-      background-color: $color-secondary-2-3;
-    }
-  }
-
-  &.orange {
-    background-color: $color-complement-1;
-    border-color: $color-complement-3;
-
-    &:hover {
-      background-color: $color-complement-3;
+      background-color: $accent;
     }
   }
 
