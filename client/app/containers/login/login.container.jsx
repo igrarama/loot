@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { authenticate } from '../../../redux/actions/userActions';
+
+import './login.scss';
+
 class Login extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: ''
+    }
+  }
 
   componentDidMount() {
     this.checkAuth(this.props);
@@ -12,26 +24,33 @@ class Login extends Component {
   }
 
   checkAuth({ current, history }){
-    if(current && current.id){
+    if(current && current._id){
       history.push('/');
     }
   }
 
-  login(e){
-    e.preventDefault();
-    this.props.dispatch({
-      type: "SET_USER",
-      user: {
-        id: '1'
-      }
-    });
+  handleChange(key, e){
+    this.setState({
+      [key]: e.target.value
+    })
   }
+
 
   render() {
     return (
-      <form onSubmit={this.login.bind(this)}>
-        <input type="submit" />
-      </form>
+      <div className="login">
+        <form action="/auth/login" method="post">
+          <div className="field">
+            <label>מייל</label>
+            <input type="email" name="email" value={ this.state.email } onChange={ this.handleChange.bind(this, 'email') } />
+          </div>
+          <div className="field">
+            <label>סיסמה</label>
+            <input type="password" name="password" value={ this.state.password } onChange={ this.handleChange.bind(this, 'password') } />
+          </div>
+          <input type="submit" />
+        </form>
+      </div>
     )
   }
 
@@ -39,7 +58,7 @@ class Login extends Component {
 
 function mapStateToProps(state){
   return {
-    current: state.auth.get('current')
+    current: state.user.get('current')
   };
 }
     

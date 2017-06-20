@@ -1,18 +1,17 @@
-import * as ActionTypes from '../consts/actionTypes';
+/* jshint -W138 */
 
-export default function userReducer(state = 0, action) {
-  switch (action.type) {
+import * as ActionTypes from '../consts/actionTypes';
+import { Map } from 'immutable';
+
+export default (state = Map(), action) => {
+  switch(action.type){
+    case ActionTypes.SET_USER:
+      return state.set('current', action.user);
     case ActionTypes.LOAD_USER_DETAILS:
-      return {
-        ...state,
-        details: action.dits
-      }
+      return state.set('details', action.dits);
     case ActionTypes.LOAD_USER_ITEMS:
-      return {
-        ...state,
-        myItems: action.items
-      }
+      return state.set('items', action.items);
     default:
       return state;
   }
-}
+};

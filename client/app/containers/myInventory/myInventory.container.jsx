@@ -92,10 +92,6 @@ class MyInventory extends Component {
         this.setState({ inputValue: value });
     }
     
-    componentWillMount() {
-        this.props.dispatch(fetchUserItems());
-    }
-
     render() {
         return (
             <div id='my-inventory-page'>
@@ -169,8 +165,8 @@ MyInventory.propTypes = {
 
 let mapStateToProps = (store) => {
     return {
-        myItems: store.user.myItems || [],
-        generalTags: store.settings.generalTags || []
+        myItems: store.user.get('items') || [],
+        generalTags: store.settings.get('generalTags') || []
     }
 }
 

@@ -10,21 +10,21 @@ import MyInventory from './containers/myInventory/myInventory.container';
 import MySignature from './containers/mySignatures/mySignature.container';
 
 
-// TODO: Add this
-// const UserIsAuthenticated = UserAuthWrapper({
-//   authSelector: state => state.auth.get('current'),
-//   redirectAction: routerActions.replace,
-//   wrapperDisplayName: 'UserIsAuthenticated'
-// })
+const UserIsAuthenticated = UserAuthWrapper({
+  authSelector: state => state.user.get('current'),
+  redirectAction: routerActions.replace,
+  wrapperDisplayName: 'UserIsAuthenticated'
+})
 
 export default () => (
   <App>
     <Switch>
       <Redirect exact path="/" to="/inventory" />
       <Route path="/login" component={ Login } />
-      <Route exact path="/inventory" component={ MyInventory } />
-      <Route path="/inventory/:id" component={ MyInventory } />
-      <Route path="/signature" component={ MySignature } />
+
+      <Route exact path="/inventory" component={ UserIsAuthenticated(MyInventory) } />
+      <Route path="/inventory/:id" component={ UserIsAuthenticated(MyInventory) } />
+      <Route path="/signature" component={ UserIsAuthenticated(MySignature) } />
     </Switch>
   </App>
 )

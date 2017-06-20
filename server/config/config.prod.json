@@ -8,9 +8,6 @@
       "name": "loot-session",
       "resave": true,
       "saveUninitialized": true
-    },
-    "bodyParser": {
-      "type": "application/*+json"
     }
   }
 }
