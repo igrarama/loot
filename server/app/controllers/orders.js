@@ -21,12 +21,14 @@ module.exports.query = (req, res) => {
 
 module.exports.create = (req, res) => {
     const order = new Order(req.body);
-    order.save((err) => {
+    order.orderTime = new Date();
+    order.save((err, newOrder) => {
         if (err)  {
             res.status(400).send(err);
         }
         else {
-            res.status(204).send();
+            res.set('Location', '/orders/' + newOrder.id);
+            res.status(200).send();
         }
     });
 }
@@ -39,7 +41,7 @@ module.exports.addComment = (req, res) => {
                 res.status(400).send(err);
             }
             else {
-                res.status(204).send();
+                res.status(200).send();
             }
         });
 }
