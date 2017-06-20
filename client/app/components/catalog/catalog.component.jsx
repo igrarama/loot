@@ -35,7 +35,12 @@ renderTitle= () =>
     {
         return(<span className="title">מחשבים</span>);
     }
-
+    renderAttribute= (productAttributes) =>
+    {
+        return( Object.keys(productAttributes).map((key,i)=>
+            <p key={key}>{key + ": " + productAttributes[key]}</p>
+        ));
+    }
     onSearch = (event) => {
         let { value } = event.target;
         this.setState({ inputValue: value });
@@ -55,32 +60,19 @@ renderTitle= () =>
                 </div>
                 <div className="catalog">
                     {
-                        this.props.productDefs.map((product, i) =>
+                        <Collapsible trigger={this.renderTitle()}>
+                            {this.props.productDefs.map((product, i) =>
                             <div className='product-wrapper' key={ 'product' + i }>
                                 {
-                                    <Collapsible trigger={this.renderTitle()}>
+
                                         <Collapsible trigger= {this.renderInput(product)}>
-                                            <p>
-                                                CPU:
-                                                {product.productAttributes.CPU}
-                                            </p>
-                                            <p>
-                                                Case Size:
-                                                {product.productAttributes.CaseSize}
-                                            </p>
-                                            <p>
-                                                Memory:
-                                                {product.productAttributes.Memory}
-                                            </p>
-                                            <p>
-                                                Storage:
-                                                {product.productAttributes.Storage}
-                                            </p>
+                                            {product.productAttributes ? this.renderAttribute(product.productAttributes) : <span> </span>}
                                         </Collapsible>
-                                    </Collapsible>
+
                                 }
                             </div>
-                        )
+                        )}
+                        </Collapsible>
                     }
                 </div>
             </div>
