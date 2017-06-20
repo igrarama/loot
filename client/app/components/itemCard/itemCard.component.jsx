@@ -36,11 +36,14 @@ class ItemCard extends Component {
 
 		return (
 		   <div className='item-card'>
-				<div
-					className={ 'item-card ' + typeColor}
-					onClick={ onSelect.bind(this, true) }>
-					<div className='basic-info'>
+				<div className={ 'card-icon' }>
+						<div className='icon-wrapper'>
+							<i className='fa fa-4x fa-laptop' />
+						</div>
 						<h4>{ item.productDef.name }</h4>
+				</div>
+				<div className={ 'item-info ' + typeColor} onClick={ onSelect.bind(this, true) }>
+					<div className='basic-info'>
 						<span>{ item.productDef.description }</span>
 					</div>
 					<div className='extra-info'>

@@ -84,7 +84,7 @@ class MyInventory extends Component {
     searchFilter = (item) => {
         if (!this.state.inputValue)
             return true;
-        return JSON.stringify(item).toLowerCase().indexOf(this.state.inputValue) != -1;
+        return JSON.stringify(item).toLowerCase().indexOf(this.state.inputValue.toLowerCase()) != -1;
     }
     
     onSearch = (event) => {
