@@ -1,0 +1,69 @@
+
+$primary: #6fcb9f;
+$secondary: #fb2e01;
+$accent: #666547;
+
+$base: #fffeb3;
+$alteration: #ffe28a;
+
+
+$class-orange: #e3a960;
+$class-blue: #4f859a;
+$class-teal: #6cb6b1;
+$class-green: #52946b;
+$class-red: #dd6137;
+
+
+.base {
+    background-color: white;
+    border-color: lightgrey;
+
+    &:hover {
+        background-color: lightgrey;
+    }
+}
+
+.blue {
+    background-color: lighten($class-blue, 20%);
+    border-color: $class-blue;
+
+    &:hover {
+        background-color: $class-blue;
+    }
+}
+
+.orange {
+    background-color: lighten($class-orange, 20%);
+    border-color: $class-orange;
+
+    &:hover {
+        background-color: $class-orange;
+    }
+}
+
+.green {
+    background-color: lighten($class-green, 20%);
+    border-color: $class-green;
+
+    &:hover {
+        background-color: $class-green;
+    }
+}
+
+.teal {
+    background-color: lighten($class-teal, 20%);
+    border-color: $class-teal;
+
+    &:hover {
+        background-color: $class-teal;
+    }
+}
+
+.orange {
+    background-color: lighten($class-red, 20%);
+    border-color: $class-red;
+
+    &:hover {
+        background-color: $class-red;
+    }
+}
