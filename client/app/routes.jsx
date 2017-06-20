@@ -8,7 +8,7 @@ import App from './app';
 import Login from './containers/login/login.container';
 import MyInventory from './containers/myInventory/myInventory.container';
 import MySignature from './containers/mySignatures/mySignature.container';
-
+import Catalog from './components/catalog/catalog.component';
 
 // TODO: Add this
 // const UserIsAuthenticated = UserAuthWrapper({
@@ -25,6 +25,7 @@ export default () => (
       <Route exact path="/inventory" component={ MyInventory } />
       <Route path="/inventory/:id" component={ MyInventory } />
       <Route path="/signature" component={ MySignature } />
+      <Route path="/catalog" component={ Catalog } />
     </Switch>
   </App>
 )
