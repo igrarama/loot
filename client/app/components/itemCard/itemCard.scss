@@ -6,7 +6,7 @@ $card-min-height: 5em;
     flex-grow: 1;
 }
 
-.item-card {
+.item-card, .item-expanded {
     border-radius: 3px;
     border: 2px solid transparent;
     padding: 0.5em;

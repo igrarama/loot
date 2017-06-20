@@ -5,4 +5,57 @@
     padding: 1em;
     border-radius: 3px;
     z-index: 2;
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+    overflow-y: auto;
+
+    &:hover {
+        cursor: default;
+    }
+
+    &.base, &.blue, &.purple, &.green, &.orange {
+        background-color: white;
+
+        &:hover {
+            background-color: white;
+        }
+    }
+
+    .advanced-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        border-top: 1px solid black;
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 0.5em;
+        padding-top: 0.5em;
+
+        div {
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+    
+    .extra-info {
+        flex-grow: initial;
+    }
+
+    .history {
+        margin-top: 1em;
+        border-top: 1px solid black;
+        border-right: 1px solid black;
+        * {
+            text-align: right;
+        }
+
+        thead, tbody {
+            td, th {
+                border-bottom: 1px solid black;
+                border-left: 1px solid black;
+            }
+        }
+
+    }
 }

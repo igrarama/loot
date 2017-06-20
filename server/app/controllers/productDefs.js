@@ -26,7 +26,7 @@ module.exports.create = (req, res) => {
             res.status(400).send(err);
         }
         else {
-            res.status(204).send();
+            res.status(200).send();
         }
     });
 }
