@@ -2,12 +2,35 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ItemCard from '../itemCard/itemCard.component';
 import Collapsible from 'react-collapsible';
+import './catalog.scss';
+
 class Catalog extends Component {
     constructor(props) {
         super(props);
     }
 
-
+renderInput= (product) =>
+{
+    return(
+        <div className="product">
+            <span className="title">שם:</span>
+            <span className="value">
+                                          {product.name}</span>
+            <span className="title">תיאור:</span>
+            <span className="value">
+                                          {product.description}</span>
+            <span className="title"> מחיר:</span>
+            <span className="value">
+                                          {product.price}</span>
+            <span className="title">
+                                        {product.isInStock ? "נמצא במלאי":"חסר במלאי"}</span>
+        </div>
+    );
+}
+renderTitle= () =>
+    {
+        return(<span className="title">מחשבים</span>);
+    }
     render() {
         return(
             <div id='catalog-page'>
@@ -19,38 +42,22 @@ class Catalog extends Component {
                         this.props.productDefs.map((product, i) =>
                             <div className='product-wrapper' key={ 'product' + i }>
                                 {
-                                    <Collapsible trigger={product.type.hebrewName}>
-                                        <p>
-                                            שם:
-                                            {product.name}
-                                        </p>
-                                        <p>
-                                        תיאור:
-                                        {product.description}</p>
-                                        <p>
-                                        מחיר:
-                                        {product.price}
-                                    </p>
-
-                                    <p>
-                                                נמצא במלאי:
-                                        {product.isInStock}
-                                     </p>
-                                        <Collapsible trigger="פרטים נוספים">
+                                    <Collapsible trigger={this.renderTitle()}>
+                                        <Collapsible trigger= {this.renderInput(product)}>
                                             <p>
-CPU:
+                                                CPU:
                                                 {product.productAttributes.CPU}
                                             </p>
                                             <p>
-Case Size:
+                                                Case Size:
                                                 {product.productAttributes.CaseSize}
                                             </p>
                                             <p>
-Memory:
+                                                Memory:
                                                 {product.productAttributes.Memory}
                                             </p>
                                             <p>
-Storage:
+                                                Storage:
                                                 {product.productAttributes.Storage}
                                             </p>
                                         </Collapsible>
