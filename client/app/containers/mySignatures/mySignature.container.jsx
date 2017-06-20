@@ -83,8 +83,7 @@ class MySignature extends Component {
                         this.props.items.map((item, i) => (
                                 <RequestCard
                                     key={ 'item_' + i }
-                                    item={ item }
-                                    typeColor={ () => "green" } />
+                                    item={ item } />
                         ))
                     }
                 </div>

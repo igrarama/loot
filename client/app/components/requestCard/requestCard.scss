@@ -1,6 +1,12 @@
 @import "../../styles/colorConstants.scss";
 
 .order{
+  border-radius: 3px;
+  border: 2px solid transparent;
+  padding: 1em;
+  align-items: center;
+  justify-content: center;
+
   *{
     margin: 1em;
   }
@@ -10,14 +16,16 @@
       display: flex;
     }
   }
-}
-
-.item-card {
-  border-radius: 3px;
-  border: 2px solid black;
-  padding: 1em;
-  align-items: center;
-  justify-content: center;
+  .buttons{
+    float: left;
+    .btn-success{
+      //todo: fix colors
+      background-color: $color-secondary-2-3;
+    }
+    .btn-error{
+      background-color: $color-complement-3;
+    }
+  }
 
   &.base {
     background-color: white;

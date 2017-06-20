@@ -40,15 +40,23 @@ class RequestCard extends Component {
         </div>;
     }
 
+    confirmOrder(item, isSuccess){
+        console.log("do something");
+    }
+
     render() {
         let { customer, products, reason, comments } = this.props.item;
         return (
-            <div className={ 'item1-card green'}>
+            <div className={ 'order ' + this.props.typeColor}>
                 <PersonCard customer={customer}/>
                 { this.displayOrder(products) }
                 <div className="reason">
                     <span>סיבת הבקשה: { reason }</span>
                     { comments ? <span>הערות נוספות: { comments }</span> : ""}
+                </div>
+                <div className="buttons">
+                    <button className="btn-success" onClick={(e) => this.confirmOrder(this.props.item, 1)}>אישור</button>
+                    <button className="btn-error" onClick={(e) => this.confirmOrder(this.props.item, 0)}>ביטול</button>
                 </div>
             </div>
         );
@@ -56,7 +64,8 @@ class RequestCard extends Component {
 }
 
 RequestCard.propTypes = {
-    item: PropTypes.object.isRequired
+    item: PropTypes.object.isRequired,
+    typeColor: PropTypes.string
 };
 
 RequestCard.defaultProps = {
