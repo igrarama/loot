@@ -150,6 +150,7 @@ class MyInventory extends Component {
                 </div>
                 <div className='main'>
                     <Backpack
+                        history = {this.props.history}
                         items={ this.props.myItems.filter(this.filterItems.bind(this)).filter(this.searchFilter) }
                         activeItem={ this.activeItem }
                         onSelect={ this.selectItem.bind(this) }

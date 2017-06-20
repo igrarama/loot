@@ -4,7 +4,7 @@ import 'normalize.css';
 import 'font-awesome/scss/font-awesome.scss';
 import './styles/site.scss';
 
-import { fetchProductTypes, fetchProductTypeTags } from '../redux/actions/productActions';
+import { fetchProductTypes, fetchProductTypeTags,fetchProductDefs } from '../redux/actions/productActions';
 import { fetchUser } from '../redux/actions/userActions';
 
 class App extends Component {
@@ -12,6 +12,7 @@ class App extends Component {
     this.props.dispatch(fetchProductTypes());
     this.props.dispatch(fetchProductTypeTags());
     this.props.dispatch(fetchUser());
+    this.props.dispatch(fetchProductDefs());
   }
   
   render() {

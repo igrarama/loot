@@ -8,6 +8,7 @@ import App from './app';
 import Login from './containers/login/login.container';
 import MyInventory from './containers/myInventory/myInventory.container';
 import MySignature from './containers/mySignatures/mySignature.container';
+import MyCatalog from './containers/catalog/myCatalog.container';
 
 
 const UserIsAuthenticated = UserAuthWrapper({
@@ -25,6 +26,7 @@ export default () => (
       <Route exact path="/inventory" component={ UserIsAuthenticated(MyInventory) } />
       <Route path="/inventory/:id" component={ UserIsAuthenticated(MyInventory) } />
       <Route path="/signature" component={ UserIsAuthenticated(MySignature) } />
+      <Route path="/myCatalog" component={ MyCatalog } />
     </Switch>
   </App>
 )
